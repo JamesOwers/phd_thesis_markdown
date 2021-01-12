@@ -49,6 +49,7 @@ There are some minor annoyances:
     - A LaTeX distribution (for example, [MacTeX](https://tug.org/mactex/) for Mac users).
     - [Pandoc](http://johnmacfarlane.net/pandoc), for converting the Markdown to the output format of your choice.  
     - Pandoc plugins by running ```make install```
+        - This will install python packages with pip, so use a virtual environment
     - Git, for version control.
 2. [Fork the repository](https://github.com/tompollard/phd_thesis_markdown/fork) on Github  
 3. Clone the repository onto your local computer (or [download the Zip file](https://github.com/tompollard/phd_thesis_markdown/archive/master.zip)).  
