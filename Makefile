@@ -35,30 +35,34 @@ pdf:
 	--template="$(STYLEDIR)/template.tex" \
 	"$(INPUTDIR)"/*.md \
 	"$(INPUTDIR)/metadata.yml" \
-	-o "$(OUTPUTDIR)/thesis.pdf" \
-	-H "$(STYLEDIR)/preamble.tex" \
+	--output "$(OUTPUTDIR)/thesis.pdf" \
+	--include-in-header="$(STYLEDIR)/preamble.tex" \
 	--bibliography="$(BIBFILE)" 2>pandoc.log \
 	--csl="$(STYLEDIR)/ref_format.csl" \
-	-V fontsize=12pt \
-	-V papersize=a4paper \
-	-V documentclass=report \
+	--number-sections \
+	--variable=fontsize:12pt \
+	--variable=papersize:a4paper \
+	--variable=documentclass:report \
 	--pdf-engine=xelatex \
 	--verbose
 
 tex:
-	pandoc "$(INPUTDIR)"/*.md \
+	pandoc  \
 	--filter=pandoc-shortcaption \
 	--filter=pandoc-xnos \
 	--template="$(STYLEDIR)/template.tex" \
+	"$(INPUTDIR)"/*.md \
 	"$(INPUTDIR)/metadata.yml" \
-	-o "$(OUTPUTDIR)/thesis.tex" \
-	-H "$(STYLEDIR)/preamble.tex" \
-	--bibliography="$(BIBFILE)" \
-	-V fontsize=12pt \
-	-V papersize=a4paper \
-	-V documentclass=report \
-	-N \
+	--output "$(OUTPUTDIR)/thesis.tex" \
+	--include-in-header="$(STYLEDIR)/preamble.tex" \
+	--bibliography="$(BIBFILE)" 2>pandoc.log \
 	--csl="$(STYLEDIR)/ref_format.csl" \
+	--number-sections \
+	--variable=fontsize:12pt \
+	--variable=papersize:a4paper \
+	--variable=documentclass:report \
+	--pdf-engine=xelatex \
+	--verbose
 
 docx:
 	pandoc \
@@ -66,7 +70,7 @@ docx:
 	--filter=pandoc-xnos \
 	"$(INPUTDIR)"/*.md \
 	"$(INPUTDIR)/metadata.yml" \
-	-o "$(OUTPUTDIR)/thesis.docx" \
+	--output "$(OUTPUTDIR)/thesis.docx" \
 	--bibliography="$(BIBFILE)" \
 	--csl="$(STYLEDIR)/ref_format.csl" \
 	--toc
@@ -74,7 +78,7 @@ docx:
 html:
 	pandoc "$(INPUTDIR)"/*.md \
 	"$(INPUTDIR)/metadata.yml" \
-	-o "$(OUTPUTDIR)/thesis.html" \
+	--output "$(OUTPUTDIR)/thesis.html" \
 	--filter=pandoc-shortcaption \
 	--filter=pandoc-xnos \
 	--standalone \
