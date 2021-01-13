@@ -30,69 +30,79 @@ install:
 
 pdf:
 	pandoc  \
-	--filter=pandoc-shortcaption \
-	--filter=pandoc-xnos \
-	--template="$(STYLEDIR)/template.tex" \
-	"$(INPUTDIR)"/*.md \
-	"$(INPUTDIR)/metadata.yml" \
-	--output "$(OUTPUTDIR)/thesis.pdf" \
-	--include-in-header="$(STYLEDIR)/preamble.tex" \
-	--bibliography="$(BIBFILE)" 2>pandoc.log \
-	--citeproc \
-	--csl="$(STYLEDIR)/ref_format.csl" \
-	--number-sections \
-	--variable=fontsize:12pt \
-	--variable=papersize:a4paper \
-	--variable=documentclass:report \
-	--pdf-engine=xelatex \
-	--verbose
+		--output "$(OUTPUTDIR)/thesis.pdf" \
+		--template="$(STYLEDIR)/template.tex" \
+		--include-in-header="$(STYLEDIR)/preamble.tex" \
+		--variable=fontsize:12pt \
+		--variable=papersize:a4paper \
+		--variable=documentclass:report \
+		--pdf-engine=xelatex \
+		"$(INPUTDIR)"/*.md \
+		"$(INPUTDIR)/metadata.yml" \
+		--filter=pandoc-shortcaption \
+		--filter=pandoc-xnos \
+		--bibliography="$(BIBFILE)" \
+		--citeproc \
+		--csl="$(STYLEDIR)/ref_format.csl" \
+		--number-sections \
+		--verbose \
+		2>pandoc.pdf.log
 
 tex:
 	pandoc  \
-	--filter=pandoc-shortcaption \
-	--filter=pandoc-xnos \
-	--template="$(STYLEDIR)/template.tex" \
-	"$(INPUTDIR)"/*.md \
-	"$(INPUTDIR)/metadata.yml" \
-	--output "$(OUTPUTDIR)/thesis.tex" \
-	--include-in-header="$(STYLEDIR)/preamble.tex" \
-	--bibliography="$(BIBFILE)" 2>pandoc.log \
-	--citeproc \
-	--csl="$(STYLEDIR)/ref_format.csl" \
-	--number-sections \
-	--variable=fontsize:12pt \
-	--variable=papersize:a4paper \
-	--variable=documentclass:report \
-	--pdf-engine=xelatex \
-	--verbose
-
-docx:
-	pandoc \
-	--filter=pandoc-shortcaption \
-	--filter=pandoc-xnos \
-	"$(INPUTDIR)"/*.md \
-	"$(INPUTDIR)/metadata.yml" \
-	--output "$(OUTPUTDIR)/thesis.docx" \
-	--bibliography="$(BIBFILE)" \
-	--csl="$(STYLEDIR)/ref_format.csl" \
-	--toc
+		--output "$(OUTPUTDIR)/thesis.tex" \
+		--template="$(STYLEDIR)/template.tex" \
+		--include-in-header="$(STYLEDIR)/preamble.tex" \
+		--variable=fontsize:12pt \
+		--variable=papersize:a4paper \
+		--variable=documentclass:report \
+		--pdf-engine=xelatex \
+		"$(INPUTDIR)"/*.md \
+		"$(INPUTDIR)/metadata.yml" \
+		--filter=pandoc-shortcaption \
+		--filter=pandoc-xnos \
+		--bibliography="$(BIBFILE)" \
+		--citeproc \
+		--csl="$(STYLEDIR)/ref_format.csl" \
+		--number-sections \
+		--verbose \
+		2>pandoc.tex.log
 
 html:
-	pandoc "$(INPUTDIR)"/*.md \
-	"$(INPUTDIR)/metadata.yml" \
-	--output "$(OUTPUTDIR)/thesis.html" \
-	--filter=pandoc-shortcaption \
-	--filter=pandoc-xnos \
-	--standalone \
-	--template="$(STYLEDIR)/template.html" \
-	--bibliography="$(BIBFILE)" \
-	--csl="$(STYLEDIR)/ref_format.csl" \
-	--include-in-header="$(STYLEDIR)/style.css" \
-	--toc \
-	--number-sections
+	pandoc  \
+		--output "$(OUTPUTDIR)/thesis.html" \
+		--template="$(STYLEDIR)/template.html" \
+		--include-in-header="$(STYLEDIR)/style.css" \
+		--toc \
+		"$(INPUTDIR)"/*.md \
+		"$(INPUTDIR)/metadata.yml" \
+		--filter=pandoc-shortcaption \
+		--filter=pandoc-xnos \
+		--bibliography="$(BIBFILE)" \
+		--citeproc \
+		--csl="$(STYLEDIR)/ref_format.csl" \
+		--number-sections \
+		--verbose \
+		2>pandoc.html.log
 	rm -rf "$(OUTPUTDIR)/source"
 	mkdir "$(OUTPUTDIR)/source"
 	cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/source/figures"
 
+docx:
+	pandoc  \
+		--output "$(OUTPUTDIR)/thesis.docx" \
+		--toc \
+		"$(INPUTDIR)"/*.md \
+		"$(INPUTDIR)/metadata.yml" \
+		--filter=pandoc-shortcaption \
+		--filter=pandoc-xnos \
+		--bibliography="$(BIBFILE)" \
+		--citeproc \
+		--csl="$(STYLEDIR)/ref_format.csl" \
+		--number-sections \
+		--verbose \
+		2>pandoc.docx.log
+
+all: pdf tex html docx
 
 .PHONY: help install pdf docx html tex
