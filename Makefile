@@ -38,6 +38,7 @@ pdf:
 	--output "$(OUTPUTDIR)/thesis.pdf" \
 	--include-in-header="$(STYLEDIR)/preamble.tex" \
 	--bibliography="$(BIBFILE)" 2>pandoc.log \
+	--citeproc \
 	--csl="$(STYLEDIR)/ref_format.csl" \
 	--number-sections \
 	--variable=fontsize:12pt \
@@ -56,6 +57,7 @@ tex:
 	--output "$(OUTPUTDIR)/thesis.tex" \
 	--include-in-header="$(STYLEDIR)/preamble.tex" \
 	--bibliography="$(BIBFILE)" 2>pandoc.log \
+	--citeproc \
 	--csl="$(STYLEDIR)/ref_format.csl" \
 	--number-sections \
 	--variable=fontsize:12pt \
