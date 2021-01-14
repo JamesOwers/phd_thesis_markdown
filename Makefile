@@ -25,8 +25,20 @@ help:
 	@echo 'get local templates with: pandoc -D latex/html/etc'
 	@echo 'or generic ones from: https://github.com/jgm/pandoc-templates'
 
+ifeq ($(OS),Windows_NT) 
+	detected_OS=Windows
+else
+	detected_OS=$(shell sh -c 'uname 2>/dev/null || echo Unknown')
+endif
+
+UNAME := $(shell uname)
+ifeq ($(UNAME), Linux)
 install:
-	sh $(BASEDIR)/install.sh
+	bash $(BASEDIR)/install_linux.sh
+else ifeq ($(shell uname), Darwin)
+install:
+	bash $(BASEDIR)/install_mac.sh
+endif
 
 pdf:
 	pandoc  \

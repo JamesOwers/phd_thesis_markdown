@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# pandoc-citeproc is depreciated
-# apt-get install pandoc-citeproc &&
 sudo tlmgr install truncate &&
 sudo tlmgr install tocloft &&
 sudo tlmgr install wallpaper &&
@@ -12,5 +10,4 @@ sudo tlmgr install threeparttable &&
 sudo tlmgr update l3packages &&
 sudo tlmgr update l3kernel &&
 sudo tlmgr update l3experimental &&
-pip install pandoc-fignos pandoc-eqnos pandoc-tablenos \
-            pandoc-secnos pandoc-shortcaption
+pip install pandoc-fignos pandoc-eqnos pandoc-tablenos pandoc-secnos pandoc-shortcaption
