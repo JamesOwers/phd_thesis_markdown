@@ -11,22 +11,45 @@ language: bash
 
 os:
   - osx
-  - linux
+  # - linux  # https://tex.stackexchange.com/questions/313768/why-getting-this-error-tlmgr-unknown-directive
 
 env:
   global:
     - PATH=$TRAVIS_BUILD_DIR/usr/bin/:$PATH
-    - PATH=/Library/TeX/texbin:$PATH
+    # - PATH=/Library/TeX/texbin:$PATH
 
 python:
   # We don't actually use the Travis Python, but this keeps it organized.
   # - "2.7"
   # - "3.5"
   - "3.6"
-  # - "3.7"
-  # - "3.8"
+  - "3.7"
+  - "3.8"
+
+addons:
+  apt:
+    packages:
+    - texlive
+    - xzdec
+    # update: true
+  homebrew:
+    casks:
+    - mactex
+    update: true
 
 before_install:
+  # For debug
+  - echo $PATH
+  - |
+    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+      eval "$(/usr/libexec/path_helper)"
+      sudo tlmgr update --self
+    elif [ "$TRAVIS_OS_NAME" = "linux" ]; then
+      tlmgr init-usertree
+      echo on linux we cannot update apt installed texlive c.f.
+      echo https://tex.stackexchange.com/questions/551383/cant-run-tex-lives-tlmgr-in-a-github-action
+      echo https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
+    fi
   # Install conda
   - |
     if [ "$TRAVIS_OS_NAME" = "osx" ]; then
@@ -36,9 +59,9 @@ before_install:
     fi
   - |
     if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -O miniconda.sh
+      wget https://repo.continuum.io/miniconda/Miniconda2-latest-${OS_NAME}-x86_64.sh -O miniconda.sh
     else
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-${OS_NAME}-x86_64.sh -O miniconda.sh
     fi
   - bash miniconda.sh -b -p $HOME/miniconda
   - source "$HOME/miniconda/etc/profile.d/conda.sh"
@@ -50,13 +73,17 @@ before_install:
   # The install of mactex...takes a long time: ~20mins
   # investigate using a docker image to save time?:
   #     https://tex.stackexchange.com/questions/398830/how-to-build-my-latex-automatically-using-travis-ci
-  - |
-    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-      brew install --cask mactex
-    elif [ "$TRAVIS_OS_NAME" = "linux" ]; then
-      apt-get install texlive
-    fi
-  - sudo tlmgr update --self
+  # This is now done in the 'addons:' travis config above
+  # - |
+  #   if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+  #     brew update && brew upgrade
+  #     brew install --cask mactex
+  #     sudo tlmgr update --self
+  #   elif [ "$TRAVIS_OS_NAME" = "linux" ]; then
+  #     sudo apt-get install texlive
+  #   fi
+  # For debug
+  - echo $PATH
 
 install:
   # Make python venv
@@ -79,6 +106,8 @@ script:
   - cat pandoc.tex.log
   - make pdf
   - cat pandoc.pdf.log
+  # Debugging the mac error
+  - find /usr/local/texlive/2020/ -type f -name "l3backend*"
   - make html
   - cat pandoc.html.log
   - make docx
