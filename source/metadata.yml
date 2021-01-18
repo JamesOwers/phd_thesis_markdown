@@ -1,12 +1,12 @@
 ---
-pagetitle: This is the HTML document title
-title: This is the title of the thesis
-subtitle: This is the subtitle of the thesis
-author: Firstname Surname
-date: January 2015
-location: University College London, UK
+pagetitle: Evaluating Algorithms that Learn to Compose Music from Scratch
+title: Evaluating Algorithms that Learn to Compose Music from Scratch
+subtitle: New long-- and short--term evaluation metrics applied to machine learning models
+author: James Owers
+date: January 2021
+location: University of Edinburgh, UK
 supervisor:
-- Professor Louis Fage
-- Captain J. Y. Cousteau
+- Amos Storkey
+- Mark Steedman
 degree: Doctor of Philosophy
 ---
