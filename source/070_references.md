@@ -5,7 +5,7 @@
 <!-- 
 Do not edit this page.
 
-References are automatically generated from the BibTex file (References.bib)
+References are automatically generated from the BibTex file (phd_thesis_references.bib)
 
 ...which you should create using your reference manager.
 -->
