@@ -56,10 +56,10 @@ In the AI ​​Song Contest teams of musicians, artists, scientists and develop
 * why are we focussing on metrics and not human evaluation
 * why do we care about 'from scratch'
 
+## Scope of this work
+...TODO... Symbolic music only
+
 ## List of contributions in this thesis
 ...TODO...
 
-* I
-* Did
-* New
-* Stuff
+- [] We review the challenges addressed and models presented amounting to the current state-of-the-art with respect to algorithmic music composition
