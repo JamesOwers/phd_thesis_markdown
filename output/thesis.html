@@ -149,7 +149,7 @@
         
                     <div id="header">
                 <h1 class="title">Evaluating Algorithms that Learn how to Compose Music from Scratch</h1>
-                                <h1 class="subtitle">New long– and short–term evaluation metrics applied to machine learning models</h1>
+                                <h1 class="subtitle">New long– and short–term evaluation metrics for evaluating to machine learning models which learn to compose music</h1>
                                                 <h2 class="author">James Owers</h2>
                                                 <h3 class="date">January 2021</h3>
                             </div>
@@ -176,9 +176,28 @@
                 </ul></li>
                 <li><a href="#literature-review"><span class="toc-section-number">2</span> Literature Review</a>
                 <ul>
-                <li><a href="#models-for-composing-music"><span class="toc-section-number">2.1</span> Models for composing music</a></li>
-                <li><a href="#evaluation-methods-for-creative-models"><span class="toc-section-number">2.2</span> Evaluation methods for creative models</a></li>
-                <li><a href="#methods-for-representing-music-on-a-computer"><span class="toc-section-number">2.3</span> Methods for representing music on a computer</a></li>
+                <li><a href="#challenges-addressed-in-the-literature-and-how-they-are-evaluated"><span class="toc-section-number">2.1</span> Challenges addressed in the literature and how they are evaluated</a></li>
+                <li><a href="#a-summary-of-evaluation-methods-for-creative-models"><span class="toc-section-number">2.2</span> A summary of evaluation methods for creative models</a>
+                <ul>
+                <li><a href="#the-need-for-automated-metrics"><span class="toc-section-number">2.2.1</span> The need for automated metrics</a></li>
+                <li><a href="#differences-between-evaluating-audio-and-symbolic-outputs"><span class="toc-section-number">2.2.2</span> Differences between evaluating audio and symbolic outputs</a></li>
+                <li><a href="#the-impossible-task-of-satisfying-all-evaluation-requirements-with-a-single-metric"><span class="toc-section-number">2.2.3</span> The impossible task of satisfying all evaluation requirements with a single metric</a></li>
+                <li><a href="#evaluation-metrics-and-representations-used-for-extracting-musical-structures"><span class="toc-section-number">2.2.4</span> Evaluation metrics and representations used for extracting musical structures</a></li>
+                </ul></li>
+                <li><a href="#models-for-composing-music"><span class="toc-section-number">2.3</span> Models for composing music</a>
+                <ul>
+                <li><a href="#models-which-learn-from-scratch"><span class="toc-section-number">2.3.1</span> Models which learn from scratch</a></li>
+                <li><a href="#models-which-do-not-learn-from-scratch"><span class="toc-section-number">2.3.2</span> Models which do not learn from scratch</a></li>
+                </ul></li>
+                <li><a href="#methods-for-representing-music-on-a-computer"><span class="toc-section-number">2.4</span> Methods for representing music on a computer</a>
+                <ul>
+                <li><a href="#information-that-must-be-captured-about-a-musical-performance"><span class="toc-section-number">2.4.1</span> Information that must be captured about a musical performance</a></li>
+                <li><a href="#the-different-representations-of-symbolic-musical-information"><span class="toc-section-number">2.4.2</span> The different representations of symbolic musical information</a></li>
+                <li><a href="#availability-of-data-for-each-representation"><span class="toc-section-number">2.4.3</span> Availability of data for each representation</a></li>
+                <li><a href="#availability-of-software-for-different-representations"><span class="toc-section-number">2.4.4</span> Availability of software for different representations</a></li>
+                <li><a href="#evidence-from-the-literature-regarding-modelling-performance-differences"><span class="toc-section-number">2.4.5</span> Evidence from the literature regarding modelling performance differences</a></li>
+                </ul></li>
+                <li><a href="#ethical-considerations-when-designing-automated-methods-for-composing-music"><span class="toc-section-number">2.5</span> Ethical considerations when designing automated methods for composing music</a></li>
                 </ul></li>
                 <li><a href="#new-metrics-for-evaluating-musical-generations"><span class="toc-section-number">3</span> New metrics for Evaluating Musical Generations</a>
                 <ul>
@@ -202,7 +221,7 @@
                                 <h1 class="unnumbered" id="abstract">Abstract</h1>
                                 <!-- This is the abstract -->
                                 <p>Evaluating whether creative content generated by a computer is ‘good,’ be it music, images, or text, is unsolved and not even well defined. We identify a property of music which is not modelled well, and propose new evaluation metrics for music generation which can be used to distinguish between real and generated data, and thus be useful for automatic quantitative analysis of generation quality.</p>
-                                <p>This is interesting because …TODO… and it has implications for …TODO…</p>
+                                <p>We focus on symbolic music because …TODO… This is interesting because …TODO… and it has implications for …TODO…</p>
                                 <p>Finally, we make recommendations for how to make progress with respect to music generation and related tasks.</p>
                                 <h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
                                 <!-- This is for acknowledging all of the people who helped out -->
@@ -263,21 +282,141 @@
                                 <li>why are we focussing on metrics and not human evaluation</li>
                                 <li>why do we care about ‘from scratch’</li>
                                 </ul>
+                                <p>## Scope of this work …TODO… Symbolic music only</p>
                                 <h2 data-number="1.7" id="list-of-contributions-in-this-thesis"><span class="header-section-number">1.7</span> List of contributions in this thesis</h2>
                                 <p>…TODO…</p>
                                 <ul>
-                                <li>I</li>
-                                <li>Did</li>
-                                <li>New</li>
-                                <li>Stuff</li>
+                                <li>[] We review the challenges addressed and models presented amounting to the current state-of-the-art with respect to algorithmic music composition</li>
                                 </ul>
                                 <h1 data-number="2" id="literature-review"><span class="header-section-number">2</span> Literature Review</h1>
-                                <h2 data-number="2.1" id="models-for-composing-music"><span class="header-section-number">2.1</span> Models for composing music</h2>
-                                <p>…TODO… 1. state of the art generative models for music - what are the problems people currently try to / can solve, and how do they do it 1. Main point is to motivate need for better evaluation 2. How do people address the issue of modelling long term dependencies - this is what we are going to aim to show is poorly evaluated</p>
-                                <h2 data-number="2.2" id="evaluation-methods-for-creative-models"><span class="header-section-number">2.2</span> Evaluation methods for creative models</h2>
+                                <p>…TODO…</p>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Add content and TODOs from Quip:<ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                https://quip.com/vVjVADMamfDm/2-Literature-Review</li>
+                                <li><input type="checkbox" disabled="" />
+                                https://quip.com/v0MOAQGvMH3O/Literature-Review-Org-Notes</li>
+                                <li><input type="checkbox" disabled="" />
+                                move data and notes tables in ./tables (use YAML, <a href="https://stackoverflow.com/a/3790497/2550114">allows large text blocks for notes</a> easy to convert to table with python)</li>
+                                </ul></li>
+                                <li><input type="checkbox" disabled="" />
+                                outline the different problems people currently try to / can solve, and how these problems relate to ‘being able to compose’</li>
+                                <li><input type="checkbox" disabled="" />
+                                Review available metrics<ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Motivate the need for automated evaluation metrics</li>
+                                <li><input type="checkbox" disabled="" />
+                                Why has there been more work on audio than symbolic?</li>
+                                <li><input type="checkbox" disabled="" />
+                                Motivate the need for better evaluation for both short and long term by highlighting shortcomings for each method reviewed</li>
+                                </ul></li>
+                                <li><input type="checkbox" disabled="" />
+                                Describe state-of-the-art generative models for music composition</li>
+                                <li><input type="checkbox" disabled="" />
+                                Identify a gap with respect to modelling long term dependencies by outlining claims and proof of them thus far - this is a specific thing we are going show is poorly evaluated</li>
+                                <li><input type="checkbox" disabled="" />
+                                Inform the reader about the multitude of different ways we can represent music and their relative strengths and weaknesses</li>
+                                <li><input type="checkbox" disabled="" />
+                                Address ethical shortcomings with respect to learning to compose</li>
+                                <li><input type="checkbox" disabled="" />
+                                Update bibtex references to non-arxiv reference if available</li>
+                                </ul>
+                                <h2 data-number="2.1" id="challenges-addressed-in-the-literature-and-how-they-are-evaluated"><span class="header-section-number">2.1</span> Challenges addressed in the literature and how they are evaluated</h2>
+                                <h2 data-number="2.2" id="a-summary-of-evaluation-methods-for-creative-models"><span class="header-section-number">2.2</span> A summary of evaluation methods for creative models</h2>
                                 <p>…TODO… how to evaluate generative models with a focus on music - how do people evaluate their success</p>
-                                <h2 data-number="2.3" id="methods-for-representing-music-on-a-computer"><span class="header-section-number">2.3</span> Methods for representing music on a computer</h2>
+                                <h3 data-number="2.2.1" id="the-need-for-automated-metrics"><span class="header-section-number">2.2.1</span> The need for automated metrics</h3>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Humans are expensive - show some efforts</li>
+                                <li><input type="checkbox" disabled="" />
+                                Humans do not agree - show some research proving this</li>
+                                <li><input type="checkbox" disabled="" />
+                                Humans are susceptible to change their opinion depending on context - show some research proving this</li>
+                                <li><input type="checkbox" disabled="" />
+                                Consistency is key when tracking performance over the long term</li>
+                                <li><input type="checkbox" disabled="" />
+                                Attempts to unify metrics and human opinion - give WMT as an example <span class="citation" data-cites="website_wmt_2020">(Anon 2020)</span></li>
+                                </ul>
+                                <h3 data-number="2.2.2" id="differences-between-evaluating-audio-and-symbolic-outputs"><span class="header-section-number">2.2.2</span> Differences between evaluating audio and symbolic outputs</h3>
+                                <h3 data-number="2.2.3" id="the-impossible-task-of-satisfying-all-evaluation-requirements-with-a-single-metric"><span class="header-section-number">2.2.3</span> The impossible task of satisfying all evaluation requirements with a single metric</h3>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Should tie a metric with performance for an intended task <span class="citation" data-cites="theis_note_2016">(Theis et al. 2016)</span></li>
+                                </ul>
+                                <h3 data-number="2.2.4" id="evaluation-metrics-and-representations-used-for-extracting-musical-structures"><span class="header-section-number">2.2.4</span> Evaluation metrics and representations used for extracting musical structures</h3>
+                                <h2 data-number="2.3" id="models-for-composing-music"><span class="header-section-number">2.3</span> Models for composing music</h2>
+                                <p>…TODO… State caveats about our distinctions: 1. Learning is essentially copying 2. By specifying the method of learning, we are incorporating expert knowledge 3. All models must work with a human composer to some extent - the programmer must choose a representation for the music and is therefore a composer in some senses</p>
+                                <ul>
+                                <li><input type="checkbox" disabled="" />
+                                Make and curate comparison table of models:<ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                keep as csv</li>
+                                <li><input type="checkbox" disabled="" />
+                                at min, we can use pandas to read and auto convert for insertion here</li>
+                                <li><input type="checkbox" disabled="" />
+                                is there a way to <span class="citation" data-cites="reference">(<strong>reference?</strong>)</span> the file here and have pandoc insert? &lt;- <strong>do not spend time on this, cursory google!</strong></li>
+                                </ul></li>
+                                <li><input type="checkbox" disabled="" />
+                                Music Transformer [@]</li>
+                                <li>[ ]</li>
+                                <li><input type="checkbox" disabled="" />
+                                Extend table from Chapter 7 and information from Chapter 6 in review paper <span class="citation" data-cites="briot_deep_2019">(Briot et al. 2019)</span></li>
+                                <li><input type="checkbox" disabled="" />
+                                Go through https://paperswithcode.com/task/music-generation</li>
+                                </ul>
+                                <h3 data-number="2.3.1" id="models-which-learn-from-scratch"><span class="header-section-number">2.3.1</span> Models which learn from scratch</h3>
+                                <p>…TODO… These are the models which our research pertains to</p>
+                                <h3 data-number="2.3.2" id="models-which-do-not-learn-from-scratch"><span class="header-section-number">2.3.2</span> Models which do not learn from scratch</h3>
+                                <p>…TODO… These models are stated to highlight why they are different, have an unfair advantage in certain contexts, or explain why they are out of scope with respect to the investigation of this thesis.</p>
+                                <h4 data-number="2.3.2.1" id="heuristic-models-which-primarily-copy-and-edit-music-from-a-database"><span class="header-section-number">2.3.2.1</span> Heuristic models which primarily copy and edit music from a database</h4>
+                                <h4 data-number="2.3.2.2" id="models-which-incorporate-expert-knowledge-into-their-design"><span class="header-section-number">2.3.2.2</span> Models which incorporate expert knowledge into their design</h4>
+                                <p>…TODO… e.g. with respect to structural hierarchy</p>
+                                <h4 data-number="2.3.2.3" id="models-which-only-work-in-conjunction-with-a-human-composer"><span class="header-section-number">2.3.2.3</span> Models which only work in conjunction with a human composer</h4>
+                                <h4 data-number="2.3.2.4" id="proprietary-models-models-for-which-adequate-details-of-their-design-are-not-publicly-available"><span class="header-section-number">2.3.2.4</span> Proprietary models: models for which adequate details of their design are not publicly available</h4>
+                                <h2 data-number="2.4" id="methods-for-representing-music-on-a-computer"><span class="header-section-number">2.4</span> Methods for representing music on a computer</h2>
                                 <p>…TODO… how to represent music data - (in relation to ‘from scratch,’ what is the minimal information supplied to the models, and is there evidence of what difference it makes (either by experiment or just by reasoning?)</p>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Note our desires with respect to our modelling challenges: we want the input to be <em>minimal and flexible</em> - the model should learn as much as possible as if it were a human listener<ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Ideally we would work directly on sound, but this involves an additional layer of representation.</li>
+                                </ul></li>
+                                </ul>
+                                <h3 data-number="2.4.1" id="information-that-must-be-captured-about-a-musical-performance"><span class="header-section-number">2.4.1</span> Information that must be captured about a musical performance</h3>
+                                <h3 data-number="2.4.2" id="the-different-representations-of-symbolic-musical-information"><span class="header-section-number">2.4.2</span> The different representations of symbolic musical information</h3>
+                                <h4 data-number="2.4.2.1" id="summary-of-differences"><span class="header-section-number">2.4.2.1</span> Summary of differences</h4>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Highlight where <em>information</em> captured by each representation is both <strong>different</strong> and <strong>more/less amenable to being learned</strong></li>
+                                </ul>
+                                <h3 data-number="2.4.3" id="availability-of-data-for-each-representation"><span class="header-section-number">2.4.3</span> Availability of data for each representation</h3>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Quantity,</li>
+                                <li><input type="checkbox" disabled="" />
+                                Quality,</li>
+                                <li><input type="checkbox" disabled="" />
+                                Legal issues</li>
+                                </ul>
+                                <h3 data-number="2.4.4" id="availability-of-software-for-different-representations"><span class="header-section-number">2.4.4</span> Availability of software for different representations</h3>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Describe MusPy <span class="citation" data-cites="dong_muspy_2020">(Dong et al. 2020)</span> for conversion between data formats</li>
+                                <li><input type="checkbox" disabled="" />
+                                Describe Music21 <span class="citation" data-cites="cuthbert_music21_2010">(Cuthbert &amp; Ariza 2010)</span> for conversion between data formats</li>
+                                </ul>
+                                <h3 data-number="2.4.5" id="evidence-from-the-literature-regarding-modelling-performance-differences"><span class="header-section-number">2.4.5</span> Evidence from the literature regarding modelling performance differences</h3>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Find any reviews (or lack thereof) of model performance differences with respect to:<ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                evaluation metrics</li>
+                                <li><input type="checkbox" disabled="" />
+                                speed</li>
+                                </ul></li>
+                                </ul>
+                                <h2 data-number="2.5" id="ethical-considerations-when-designing-automated-methods-for-composing-music"><span class="header-section-number">2.5</span> Ethical considerations when designing automated methods for composing music</h2>
                                 <h1 data-number="3" id="new-metrics-for-evaluating-musical-generations"><span class="header-section-number">3</span> New metrics for Evaluating Musical Generations</h1>
                                 <h2 data-number="3.1" id="the-midi-degradation-toolkit"><span class="header-section-number">3.1</span> The midi degradation toolkit</h2>
                                 <h2 data-number="3.2" id="a-phrase-level-metric-for-short-term-structure"><span class="header-section-number">3.2</span> A phrase-level metric for short-term structure</h2>
@@ -316,24 +455,36 @@
                                 <!-- 
                                 Do not edit this page.
 
-                                References are automatically generated from the BibTex file (References.bib)
+                                References are automatically generated from the BibTex file (phd_thesis_references.bib)
 
                                 ...which you should create using your reference manager.
                                 -->
                                 <h1 data-number="7" id="references"><span class="header-section-number">7</span> References</h1>
                                 <p>…TODO… check over using https://www.cl.cam.ac.uk/~ga384/bibfix.html</p>
                                 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+                                <div id="ref-website_wmt_2020" class="csl-entry" role="doc-biblioentry">
+                                Anon, 2020. 2020 <span>Fifth</span> <span>Conference</span> on <span>Machine</span> <span>Translation</span> (<span>WMT20</span>). Available at: <a href="http://www.statmt.org/wmt20/">http://www.statmt.org/wmt20/</a> [Accessed January 23, 2021].
+                                </div>
                                 <div id="ref-ariza_interrogator_2009" class="csl-entry" role="doc-biblioentry">
                                 Ariza, C., 2009. The <span>Interrogator</span> as <span>Critic</span>: <span>The</span> <span>Turing</span> <span>Test</span> and the <span>Evaluation</span> of <span>Generative</span> <span>Music</span> <span>Systems</span>. <em>Computer Music Journal</em>, 33(2), pp.48–70. Available at: <a href="https://www.jstor.org/stable/40301027">https://www.jstor.org/stable/40301027</a> [Accessed January 22, 2021].
                                 </div>
                                 <div id="ref-briot_deep_2019" class="csl-entry" role="doc-biblioentry">
                                 Briot, J.-P., Hadjeres, G. &amp; Pachet, F.-D., 2019. Deep <span>Learning</span> <span>Techniques</span> for <span>Music</span> <span>Generation</span> – <span>A</span> <span>Survey</span>. <em>arXiv:1709.01620 [cs]</em>. Available at: <a href="http://arxiv.org/abs/1709.01620">http://arxiv.org/abs/1709.01620</a> [Accessed January 22, 2021].
                                 </div>
+                                <div id="ref-cuthbert_music21_2010" class="csl-entry" role="doc-biblioentry">
+                                Cuthbert, M.S. &amp; Ariza, C., 2010. music21: <span>A</span> <span>Toolkit</span> for <span>Computer</span>-<span>Aided</span> <span>Musicology</span> and <span>Symbolic</span> <span>Music</span> <span>Data</span>. <em>Michael Cuthbert</em>. Available at: <a href="https://dspace.mit.edu/handle/1721.1/84963">https://dspace.mit.edu/handle/1721.1/84963</a> [Accessed January 23, 2021].
+                                </div>
+                                <div id="ref-dong_muspy_2020" class="csl-entry" role="doc-biblioentry">
+                                Dong, H.-W. et al., 2020. <span>MusPy</span>: <span>A</span> <span>Toolkit</span> for <span>Symbolic</span> <span>Music</span> <span>Generation</span>. <em>arXiv:2008.01951 [cs, eess, stat]</em>. Available at: <a href="http://arxiv.org/abs/2008.01951">http://arxiv.org/abs/2008.01951</a> [Accessed January 23, 2021].
+                                </div>
                                 <div id="ref-hollings_ada_2018" class="csl-entry" role="doc-biblioentry">
                                 Hollings, C., Martin, U. &amp; Rice, A.C., 2018. <em>Ada <span>Lovelace</span>: The making of a computer scientist</em>, Oxford: Bodleian Library.
                                 </div>
                                 <div id="ref-sturm_2020_2020" class="csl-entry" role="doc-biblioentry">
                                 Sturm, B., 2020. The 2020 <span>Joint</span> <span>Conference</span> on <span>AI</span> <span>Music</span> <span>Creativity</span>. <em>The 2020 Joint Conference on AI Music Creativity</em>. Available at: <a href="https://boblsturm.github.io/aimusic2020/">https://boblsturm.github.io/aimusic2020/</a> [Accessed January 22, 2021].
+                                </div>
+                                <div id="ref-theis_note_2016" class="csl-entry" role="doc-biblioentry">
+                                Theis, L., Oord, A. van den &amp; Bethge, M., 2016. A note on the evaluation of generative models. <em>arXiv:1511.01844 [cs, stat]</em>. Available at: <a href="http://arxiv.org/abs/1511.01844">http://arxiv.org/abs/1511.01844</a> [Accessed January 23, 2021].
                                 </div>
                                 </div>
             </body>

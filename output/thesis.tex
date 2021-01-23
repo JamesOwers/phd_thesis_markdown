@@ -266,8 +266,8 @@
                 \vspace{.5cm}
 
         \Large
-        New long-- and short--term evaluation metrics applied to machine
-        learning models
+        New long-- and short--term evaluation metrics for evaluating to
+        machine learning models which learn to compose music
         
 
         \vspace{1.5cm}
@@ -321,8 +321,9 @@ evaluation metrics for music generation which can be used to distinguish
 between real and generated data, and thus be useful for automatic
 quantitative analysis of generation quality.
 
-This is interesting because \ldots TODO\ldots{} and it has implications
-for \ldots TODO\ldots{}
+We focus on symbolic music because \ldots TODO\ldots{} This is
+interesting because \ldots TODO\ldots{} and it has implications for
+\ldots TODO\ldots{}
 
 Finally, we make recommendations for how to make progress with respect
 to music generation and related tasks.
@@ -504,6 +505,8 @@ starting point? What feedback do we give?
   why do we care about `from scratch'
 \end{itemize}
 
+\#\#~Scope of this work \ldots TODO\ldots{} Symbolic music only
+
 \hypertarget{list-of-contributions-in-this-thesis}{%
 \section{List of contributions in this
 thesis}\label{list-of-contributions-in-this-thesis}}
@@ -513,33 +516,185 @@ thesis}\label{list-of-contributions-in-this-thesis}}
 \begin{itemize}
 \tightlist
 \item
-  I
-\item
-  Did
-\item
-  New
-\item
-  Stuff
+  {[}{]} We review the challenges addressed and models presented
+  amounting to the current state-of-the-art with respect to algorithmic
+  music composition
 \end{itemize}
 
 \hypertarget{literature-review}{%
 \chapter{Literature Review}\label{literature-review}}
 
-\hypertarget{models-for-composing-music}{%
-\section{Models for composing music}\label{models-for-composing-music}}
+\ldots TODO\ldots{}
 
-\ldots TODO\ldots{} 1. state of the art generative models for music -
-what are the problems people currently try to / can solve, and how do
-they do it 1. Main point is to motivate need for better evaluation 2.
-How do people address the issue of modelling long term dependencies -
-this is what we are going to aim to show is poorly evaluated
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Add content and TODOs from Quip:
 
-\hypertarget{evaluation-methods-for-creative-models}{%
-\section{Evaluation methods for creative
-models}\label{evaluation-methods-for-creative-models}}
+  \begin{itemize}
+  \tightlist
+  \item[$\square$]
+    https://quip.com/vVjVADMamfDm/2-Literature-Review
+  \item[$\square$]
+    https://quip.com/v0MOAQGvMH3O/Literature-Review-Org-Notes
+  \item[$\square$]
+    move data and notes tables in ./tables (use YAML,
+    \href{https://stackoverflow.com/a/3790497/2550114}{allows large text
+    blocks for notes} easy to convert to table with python)
+  \end{itemize}
+\item[$\square$]
+  outline the different problems people currently try to / can solve,
+  and how these problems relate to `being able to compose'
+\item[$\square$]
+  Review available metrics
+
+  \begin{itemize}
+  \tightlist
+  \item[$\square$]
+    Motivate the need for automated evaluation metrics
+  \item[$\square$]
+    Why has there been more work on audio than symbolic?
+  \item[$\square$]
+    Motivate the need for better evaluation for both short and long term
+    by highlighting shortcomings for each method reviewed
+  \end{itemize}
+\item[$\square$]
+  Describe state-of-the-art generative models for music composition
+\item[$\square$]
+  Identify a gap with respect to modelling long term dependencies by
+  outlining claims and proof of them thus far - this is a specific thing
+  we are going show is poorly evaluated
+\item[$\square$]
+  Inform the reader about the multitude of different ways we can
+  represent music and their relative strengths and weaknesses
+\item[$\square$]
+  Address ethical shortcomings with respect to learning to compose
+\item[$\square$]
+  Update bibtex references to non-arxiv reference if available
+\end{itemize}
+
+\hypertarget{challenges-addressed-in-the-literature-and-how-they-are-evaluated}{%
+\section{Challenges addressed in the literature and how they are
+evaluated}\label{challenges-addressed-in-the-literature-and-how-they-are-evaluated}}
+
+\hypertarget{a-summary-of-evaluation-methods-for-creative-models}{%
+\section{A summary of evaluation methods for creative
+models}\label{a-summary-of-evaluation-methods-for-creative-models}}
 
 \ldots TODO\ldots{} how to evaluate generative models with a focus on
 music - how do people evaluate their success
+
+\hypertarget{the-need-for-automated-metrics}{%
+\subsection{The need for automated
+metrics}\label{the-need-for-automated-metrics}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Humans are expensive - show some efforts
+\item[$\square$]
+  Humans do not agree - show some research proving this
+\item[$\square$]
+  Humans are susceptible to change their opinion depending on context -
+  show some research proving this
+\item[$\square$]
+  Consistency is key when tracking performance over the long term
+\item[$\square$]
+  Attempts to unify metrics and human opinion - give WMT as an example
+  (Anon 2020)
+\end{itemize}
+
+\hypertarget{differences-between-evaluating-audio-and-symbolic-outputs}{%
+\subsection{Differences between evaluating audio and symbolic
+outputs}\label{differences-between-evaluating-audio-and-symbolic-outputs}}
+
+\hypertarget{the-impossible-task-of-satisfying-all-evaluation-requirements-with-a-single-metric}{%
+\subsection{The impossible task of satisfying all evaluation
+requirements with a single
+metric}\label{the-impossible-task-of-satisfying-all-evaluation-requirements-with-a-single-metric}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Should tie a metric with performance for an intended task (Theis et
+  al. 2016)
+\end{itemize}
+
+\hypertarget{evaluation-metrics-and-representations-used-for-extracting-musical-structures}{%
+\subsection{Evaluation metrics and representations used for extracting
+musical
+structures}\label{evaluation-metrics-and-representations-used-for-extracting-musical-structures}}
+
+\hypertarget{models-for-composing-music}{%
+\section{Models for composing music}\label{models-for-composing-music}}
+
+\ldots TODO\ldots{} State caveats about our distinctions: 1. Learning is
+essentially copying 2. By specifying the method of learning, we are
+incorporating expert knowledge 3. All models must work with a human
+composer to some extent - the programmer must choose a representation
+for the music and is therefore a composer in some senses
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Make and curate comparison table of models:
+
+  \begin{itemize}
+  \tightlist
+  \item[$\square$]
+    keep as csv
+  \item[$\square$]
+    at min, we can use pandas to read and auto convert for insertion
+    here
+  \item[$\square$]
+    is there a way to (\textbf{reference?}) the file here and have
+    pandoc insert? \textless- \textbf{do not spend time on this, cursory
+    google!}
+  \end{itemize}
+\item[$\square$]
+  Music Transformer {[}@{]}
+\item
+  {[} {]}
+\item[$\square$]
+  Extend table from Chapter 7 and information from Chapter 6 in review
+  paper (Briot et al. 2019)
+\item[$\square$]
+  Go through https://paperswithcode.com/task/music-generation
+\end{itemize}
+
+\hypertarget{models-which-learn-from-scratch}{%
+\subsection{Models which learn from
+scratch}\label{models-which-learn-from-scratch}}
+
+\ldots TODO\ldots{} These are the models which our research pertains to
+
+\hypertarget{models-which-do-not-learn-from-scratch}{%
+\subsection{Models which do not learn from
+scratch}\label{models-which-do-not-learn-from-scratch}}
+
+\ldots TODO\ldots{} These models are stated to highlight why they are
+different, have an unfair advantage in certain contexts, or explain why
+they are out of scope with respect to the investigation of this thesis.
+
+\hypertarget{heuristic-models-which-primarily-copy-and-edit-music-from-a-database}{%
+\subsubsection{Heuristic models which primarily copy and edit music from
+a
+database}\label{heuristic-models-which-primarily-copy-and-edit-music-from-a-database}}
+
+\hypertarget{models-which-incorporate-expert-knowledge-into-their-design}{%
+\subsubsection{Models which incorporate expert knowledge into their
+design}\label{models-which-incorporate-expert-knowledge-into-their-design}}
+
+\ldots TODO\ldots{} e.g.~with respect to structural hierarchy
+
+\hypertarget{models-which-only-work-in-conjunction-with-a-human-composer}{%
+\subsubsection{Models which only work in conjunction with a human
+composer}\label{models-which-only-work-in-conjunction-with-a-human-composer}}
+
+\hypertarget{proprietary-models-models-for-which-adequate-details-of-their-design-are-not-publicly-available}{%
+\subsubsection{Proprietary models: models for which adequate details of
+their design are not publicly
+available}\label{proprietary-models-models-for-which-adequate-details-of-their-design-are-not-publicly-available}}
 
 \hypertarget{methods-for-representing-music-on-a-computer}{%
 \section{Methods for representing music on a
@@ -549,6 +704,91 @@ computer}\label{methods-for-representing-music-on-a-computer}}
 scratch,' what is the minimal information supplied to the models, and is
 there evidence of what difference it makes (either by experiment or just
 by reasoning?)
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Note our desires with respect to our modelling challenges: we want the
+  input to be \emph{minimal and flexible} - the model should learn as
+  much as possible as if it were a human listener
+
+  \begin{itemize}
+  \tightlist
+  \item[$\square$]
+    Ideally we would work directly on sound, but this involves an
+    additional layer of representation.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{information-that-must-be-captured-about-a-musical-performance}{%
+\subsection{Information that must be captured about a musical
+performance}\label{information-that-must-be-captured-about-a-musical-performance}}
+
+\hypertarget{the-different-representations-of-symbolic-musical-information}{%
+\subsection{The different representations of symbolic musical
+information}\label{the-different-representations-of-symbolic-musical-information}}
+
+\hypertarget{summary-of-differences}{%
+\subsubsection{Summary of differences}\label{summary-of-differences}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Highlight where \emph{information} captured by each representation is
+  both \textbf{different} and \textbf{more/less amenable to being
+  learned}
+\end{itemize}
+
+\hypertarget{availability-of-data-for-each-representation}{%
+\subsection{Availability of data for each
+representation}\label{availability-of-data-for-each-representation}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Quantity,
+\item[$\square$]
+  Quality,
+\item[$\square$]
+  Legal issues
+\end{itemize}
+
+\hypertarget{availability-of-software-for-different-representations}{%
+\subsection{Availability of software for different
+representations}\label{availability-of-software-for-different-representations}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Describe MusPy (Dong et al. 2020) for conversion between data formats
+\item[$\square$]
+  Describe Music21 (Cuthbert \& Ariza 2010) for conversion between data
+  formats
+\end{itemize}
+
+\hypertarget{evidence-from-the-literature-regarding-modelling-performance-differences}{%
+\subsection{Evidence from the literature regarding modelling performance
+differences}\label{evidence-from-the-literature-regarding-modelling-performance-differences}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Find any reviews (or lack thereof) of model performance differences
+  with respect to:
+
+  \begin{itemize}
+  \tightlist
+  \item[$\square$]
+    evaluation metrics
+  \item[$\square$]
+    speed
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ethical-considerations-when-designing-automated-methods-for-composing-music}{%
+\section{Ethical considerations when designing automated methods for
+composing
+music}\label{ethical-considerations-when-designing-automated-methods-for-composing-music}}
 
 \hypertarget{new-metrics-for-evaluating-musical-generations}{%
 \chapter{New metrics for Evaluating Musical
@@ -656,6 +896,11 @@ https://www.cl.cam.ac.uk/\textasciitilde ga384/bibfix.html
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-website_wmt_2020}{}%
+Anon, 2020. 2020 {Fifth} {Conference} on {Machine} {Translation}
+({WMT20}). Available at: \url{http://www.statmt.org/wmt20/} {[}Accessed
+January 23, 2021{]}.
+
 \leavevmode\hypertarget{ref-ariza_interrogator_2009}{}%
 Ariza, C., 2009. The {Interrogator} as {Critic}: {The} {Turing} {Test}
 and the {Evaluation} of {Generative} {Music} {Systems}. \emph{Computer
@@ -669,6 +914,19 @@ Briot, J.-P., Hadjeres, G. \& Pachet, F.-D., 2019. Deep {Learning}
 \emph{arXiv:1709.01620 {[}cs{]}}. Available at:
 \url{http://arxiv.org/abs/1709.01620} {[}Accessed January 22, 2021{]}.
 
+\leavevmode\hypertarget{ref-cuthbert_music21_2010}{}%
+Cuthbert, M.S. \& Ariza, C., 2010. music21: {A} {Toolkit} for
+{Computer}-{Aided} {Musicology} and {Symbolic} {Music} {Data}.
+\emph{Michael Cuthbert}. Available at:
+\url{https://dspace.mit.edu/handle/1721.1/84963} {[}Accessed January 23,
+2021{]}.
+
+\leavevmode\hypertarget{ref-dong_muspy_2020}{}%
+Dong, H.-W. et al., 2020. {MusPy}: {A} {Toolkit} for {Symbolic} {Music}
+{Generation}. \emph{arXiv:2008.01951 {[}cs, eess, stat{]}}. Available
+at: \url{http://arxiv.org/abs/2008.01951} {[}Accessed January 23,
+2021{]}.
+
 \leavevmode\hypertarget{ref-hollings_ada_2018}{}%
 Hollings, C., Martin, U. \& Rice, A.C., 2018. \emph{Ada {Lovelace}: The
 making of a computer scientist}, Oxford: Bodleian Library.
@@ -678,6 +936,12 @@ Sturm, B., 2020. The 2020 {Joint} {Conference} on {AI} {Music}
 {Creativity}. \emph{The 2020 Joint Conference on AI Music Creativity}.
 Available at: \url{https://boblsturm.github.io/aimusic2020/} {[}Accessed
 January 22, 2021{]}.
+
+\leavevmode\hypertarget{ref-theis_note_2016}{}%
+Theis, L., Oord, A. van den \& Bethge, M., 2016. A note on the
+evaluation of generative models. \emph{arXiv:1511.01844 {[}cs, stat{]}}.
+Available at: \url{http://arxiv.org/abs/1511.01844} {[}Accessed January
+23, 2021{]}.
 
 \end{CSLReferences}
 
