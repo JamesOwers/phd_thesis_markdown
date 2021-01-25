@@ -9,4 +9,9 @@ supervisor:
 - Amos Storkey
 - Mark Steedman
 degree: Doctor of Philosophy
+# documentclass: infthesis
+# classoption:
+# - phd
+# - cdtds
+documentclass: report
 ---

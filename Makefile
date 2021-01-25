@@ -47,7 +47,6 @@ pdf:
 		--include-in-header="$(STYLEDIR)/preamble.tex" \
 		--variable=fontsize:12pt \
 		--variable=papersize:a4paper \
-		--variable=documentclass:report \
 		--pdf-engine=xelatex \
 		"$(INPUTDIR)"/*.md \
 		"$(INPUTDIR)/metadata.yml" \
@@ -67,7 +66,6 @@ tex:
 		--include-in-header="$(STYLEDIR)/preamble.tex" \
 		--variable=fontsize:12pt \
 		--variable=papersize:a4paper \
-		--variable=documentclass:report \
 		--pdf-engine=xelatex \
 		"$(INPUTDIR)"/*.md \
 		"$(INPUTDIR)/metadata.yml" \
