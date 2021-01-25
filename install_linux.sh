@@ -2,13 +2,15 @@
 
 set -e  # makes the script fail as soon as one command fails
 
+sudo tlmgr install wallpaper
 sudo tlmgr install truncate
 sudo tlmgr install tocloft
-sudo tlmgr install wallpaper
-sudo tlmgr install morefloats
-sudo tlmgr install sectsty
-sudo tlmgr install siunitx
 sudo tlmgr install threeparttable
+sudo tlmgr install siunitx
+sudo tlmgr install sectsty
+sudo tlmgr install morefloats
+sudo tlmgr install graphics
+sudo tlmgr install geometry
 sudo tlmgr update l3packages
 sudo tlmgr update l3kernel
 sudo tlmgr update l3experimental
