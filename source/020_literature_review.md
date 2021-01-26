@@ -42,6 +42,7 @@
 
 ## Models for composing music
 ...TODO... State caveats about our distinctions:
+
 1. Learning is essentially copying
 2. By specifying the method of learning, we are incorporating expert knowledge
 3. All models must work with a human composer to some extent - the programmer must choose a representation for the music and is therefore a composer in some senses
@@ -49,9 +50,9 @@
 - [ ] Make and curate comparison table of models:
     - [ ] keep as csv
     - [ ] at min, we can use pandas to read and auto convert for insertion here
-    - [ ] is there a way to @reference the file here and have pandoc insert? <- **do not spend time on this, cursory google!** 
-- [ ] Music Transformer [@]
-- [ ]
+    - [ ] is there a way to `@reference` the file here and have pandoc insert? <- **do not spend time on this, cursory google!** 
+- [ ] Music Transformer [@huang_music_2019]
+- [ ] MuseNet [@payne_musenet_2019]
 - [ ] Extend table from Chapter 7 and information from Chapter 6 in review paper [@briot_deep_2019] 
 - [ ] Go through https://paperswithcode.com/task/music-generation
 

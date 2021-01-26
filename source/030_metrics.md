@@ -1,7 +1,9 @@
 
 # New metrics for Evaluating Musical Generations
 
-## The midi degradation toolkit
+## The MIDI degradation toolkit
+
+[@mcleod_midi_2020]
 
 ## A phrase-level metric for short-term structure
 

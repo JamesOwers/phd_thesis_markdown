@@ -1,6 +1,8 @@
 
 # Introduction
 
+## Target problems addressed in this thesis
+
 ## Historical background
 ...TODO... Give historical background
 
@@ -38,7 +40,7 @@ Lovelace also has the Lovelace Test of Creativity attributed to her - see [@ariz
 In the AI ​​Song Contest teams of musicians, artists, scientists and developers take on the challenge of creating a new Eurovision-like hit with the help of artificial intelligence.](https://www.vprobroadcast.com/titles/ai-songcontest.html)
 * [Swooshes, Seaboards, Synths and Spawn](https://www.bbc.co.uk/programmes/m000cngg)
 * [David Rosen and Scott Miles on the Neuroscience of Music and Creativity](https://overcast.fm/+S_7no2kwM)
-* AI Music Generation Challenge 2020 - [@sturm_2020_2020]
+* AI Music Generation Challenge 2020 - [@sturm_ai_2020]
 
 
 ## What are algorithms that learn
@@ -62,4 +64,4 @@ In the AI ​​Song Contest teams of musicians, artists, scientists and develop
 ## List of contributions in this thesis
 ...TODO...
 
-- [] We review the challenges addressed and models presented amounting to the current state-of-the-art with respect to algorithmic music composition
+- [ ] We review the challenges addressed and models presented amounting to the current state-of-the-art with respect to algorithmic music composition
