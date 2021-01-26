@@ -8,3 +8,5 @@
 \end{tabbing}
 
 \newpage
+
+\pagenumbering{arabic}
