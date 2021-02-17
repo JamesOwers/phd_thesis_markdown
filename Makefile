@@ -25,7 +25,7 @@ help:
 	@echo 'get local templates with: pandoc -D latex/html/etc'
 	@echo 'or generic ones from: https://github.com/jgm/pandoc-templates'
 
-ifeq ($(OS),Windows_NT) 
+ifeq ($(OS),Windows_NT)
 	detected_OS=Windows
 else
 	detected_OS=$(shell sh -c 'uname 2>/dev/null || echo Unknown')
@@ -95,8 +95,10 @@ html:
 		--verbose \
 		2>pandoc.html.log
 	rm -rf "$(OUTPUTDIR)/source"
-	mkdir "$(OUTPUTDIR)/source"
-	cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/source/figures"
+	if [ -d "$(INPUTDIR)/figures" ]; then \
+		mkdir -p "$(OUTPUTDIR)/source" \
+		cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/source/figures"; \
+	fi
 
 docx:
 	pandoc  \
