@@ -58,10 +58,26 @@ In the AI ​​Song Contest teams of musicians, artists, scientists and develop
 * why are we focussing on metrics and not human evaluation
 * why do we care about 'from scratch'
 
+Metrics - more audio features than symbolic.
+
+[@giraud_chapter_2015]
+
+> There is less work to date that focuses on segmentation of symbolic scores
+
+Why do we need computational rather than human analysis
+
+[@marsden_music_2016]
+
+> Computational music analysis needs to carve out a place for itself where it is not simply mimicry of human analysis, but a place which is not so distant from the human activity to prevent useful communication with musicians. We need to recall the potential value of computational analysis, the reasons we embark on this enterprise at all.
+
 ## Scope of this work
 ...TODO... Symbolic music only
 
 ## List of contributions in this thesis
 ...TODO...
 
-- [ ] We review the challenges addressed and models presented amounting to the current state-of-the-art with respect to algorithmic music composition
+- [ ] We provide a literature review of the current state-of-the-art with respect to
+algorithmic music composition: the challenges addressed and models presented
+  - [ ] Note that [@briot_deep_2019] does not include COCOnet nor any Transformer models
+  so details of these is a new contribution
+- [ ] Consistent open source python re-implementations of all models compared
