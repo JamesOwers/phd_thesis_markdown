@@ -428,7 +428,7 @@ music}\label{ada-lovelace-noting-computers-could-generate-music}}
 \ldots TODO\ldots{} From (Hollings et al. 2018) Ada Lovelace, ``Sketch
 of the Analytical Engine invented by Charles Babbage, Esq., by L. F.
 Menabrea,'' Scientific Memoirs, vol.~3, ed.~Richard Taylor, 1843,
-pp.~666-731 (this quote on p 694)
+pp.~666-731 (this quote on p 694).
 
 \begin{quote}
 ``Note G'' is the culmination of Lovelace's paper, following many pages
@@ -467,11 +467,11 @@ achievements}\label{modern-interest-and-achievements}}
   \href{https://www.bbc.co.uk/news/av/technology-52236563}{Imogen Heap:
   How AI is helping to push music creativity}
 \item
-  \href{https://www.vprobroadcast.com/titles/ai-songcontest.html}{This
-  is the AI Song Contest In the AI \hspace{0pt}\hspace{0pt}Song Contest
-  teams of musicians, artists, scientists and developers take on the
-  challenge of creating a new Eurovision-like hit with the help of
-  artificial intelligence.}
+  \href{https://www.vprobroadcast.com/titles/ai-songcontest.html}{The AI
+  Song Contest} - In the AI \hspace{0pt}\hspace{0pt}Song Contest teams
+  of musicians, artists, scientists and developers take on the challenge
+  of creating a new Eurovision-like hit with the help of artificial
+  intelligence.
 \item
   \href{https://www.bbc.co.uk/programmes/m000cngg}{Swooshes, Seaboards,
   Synths and Spawn}
@@ -509,18 +509,20 @@ starting point? What feedback do we give?
 \tightlist
 \item
   why are we focussing on metrics and not human evaluation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    how do we benchmark without them?
+  \end{itemize}
+\item
+  where is the gap - not many metrics are available
 \item
   why do we care about `from scratch'
 \end{itemize}
 
-Metrics - more audio features than symbolic.
-
-(Giraud et al. 2015)
-
-\begin{quote}
-There is less work to date that focuses on segmentation of symbolic
-scores
-\end{quote}
+(Sturm 2017) gives background as to why we need metrics but no specific
+methods.
 
 Why do we need computational rather than human analysis
 
@@ -532,6 +534,15 @@ it is not simply mimicry of human analysis, but a place which is not so
 distant from the human activity to prevent useful communication with
 musicians. We need to recall the potential value of computational
 analysis, the reasons we embark on this enterprise at all.
+\end{quote}
+
+Metrics - more audio features than symbolic.
+
+(Giraud et al. 2015)
+
+\begin{quote}
+There is less work to date that focuses on segmentation of symbolic
+scores
 \end{quote}
 
 \hypertarget{scope-of-this-work}{%
@@ -555,8 +566,8 @@ thesis}\label{list-of-contributions-in-this-thesis}}
   \begin{itemize}
   \tightlist
   \item[$\square$]
-    Note that (Briot et al. 2019) does not include COCOnet nor any
-    Transformer models so details of these is a new contribution
+    Note that (Briot et al. 2019) does not include \texttt{COCOnet} nor
+    any Transformer models so details of these is a new contribution
   \end{itemize}
 \item[$\square$]
   Consistent open source python re-implementations of all models
@@ -1046,6 +1057,12 @@ Sturm, B., 2020. {AI} {Music} {Generation} {Challenge} 2020. \emph{The
 2020 Joint Conference on AI Music Creativity}. Available at:
 \url{https://boblsturm.github.io/aimusic2020/} {[}Accessed January 22,
 2021{]}.
+
+\leavevmode\hypertarget{ref-sturm_benchmarking_2017}{}%
+Sturm, B.L.T., 2017. Benchmarking {``music generation systems?''}
+\emph{Folk the Algorithms}. Available at:
+\url{https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/}
+{[}Accessed February 18, 2021{]}.
 
 \leavevmode\hypertarget{ref-theis_note_2016}{}%
 Theis, L., Oord, A. van den \& Bethge, M., 2016. A {Note} on the

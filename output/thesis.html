@@ -253,7 +253,7 @@
                                 <p>One of the first documented case of stochastic music, long before computers, is the Musikalisches Wurfelspiel (Dice Music) by Wolfgang Amadeus Mozart. It was designed for using dice to generate music by concatenating randomly selected predefined music segments composed in a given style (Austrian waltz in a given key).</p>
                                 </blockquote>
                                 <h3 data-number="1.2.3" id="ada-lovelace-noting-computers-could-generate-music"><span class="header-section-number">1.2.3</span> Ada lovelace noting computers could generate music</h3>
-                                <p>…TODO… From <span class="citation" data-cites="hollings_ada_2018">(Hollings et al. 2018)</span> Ada Lovelace, “Sketch of the Analytical Engine invented by Charles Babbage, Esq., by L. F. Menabrea,” Scientific Memoirs, vol. 3, ed. Richard Taylor, 1843, pp. 666-731 (this quote on p 694)</p>
+                                <p>…TODO… From <span class="citation" data-cites="hollings_ada_2018">(Hollings et al. 2018)</span> Ada Lovelace, “Sketch of the Analytical Engine invented by Charles Babbage, Esq., by L. F. Menabrea,” Scientific Memoirs, vol. 3, ed. Richard Taylor, 1843, pp. 666-731 (this quote on p 694).</p>
                                 <blockquote>
                                 <p>“Note G” is the culmination of Lovelace’s paper, following many pages of detailed explanation of the operation of the Engine and the cards, and of the notation of the tables. The paper shows Lovelace’s obsessive attention to mathematical details - it also shows her imagination in thinking about the bigger picture.</p>
                                 </blockquote>
@@ -268,7 +268,7 @@
                                 <p>…TODO…</p>
                                 <ul>
                                 <li><a href="https://www.bbc.co.uk/news/av/technology-52236563">Imogen Heap: How AI is helping to push music creativity</a></li>
-                                <li><a href="https://www.vprobroadcast.com/titles/ai-songcontest.html">This is the AI Song Contest In the AI ​​Song Contest teams of musicians, artists, scientists and developers take on the challenge of creating a new Eurovision-like hit with the help of artificial intelligence.</a></li>
+                                <li><a href="https://www.vprobroadcast.com/titles/ai-songcontest.html">The AI Song Contest</a> - In the AI ​​Song Contest teams of musicians, artists, scientists and developers take on the challenge of creating a new Eurovision-like hit with the help of artificial intelligence.</li>
                                 <li><a href="https://www.bbc.co.uk/programmes/m000cngg">Swooshes, Seaboards, Synths and Spawn</a></li>
                                 <li><a href="https://overcast.fm/+S_7no2kwM">David Rosen and Scott Miles on the Neuroscience of Music and Creativity</a></li>
                                 <li>AI Music Generation Challenge 2020 - <span class="citation" data-cites="sturm_ai_2020">(Sturm 2020)</span></li>
@@ -282,18 +282,23 @@
                                 <h2 data-number="1.7" id="motivation-for-this-work"><span class="header-section-number">1.7</span> Motivation for this work</h2>
                                 <p>…TODO…</p>
                                 <ul>
-                                <li>why are we focussing on metrics and not human evaluation</li>
+                                <li>why are we focussing on metrics and not human evaluation
+                                <ul>
+                                <li>how do we benchmark without them?</li>
+                                </ul></li>
+                                <li>where is the gap - not many metrics are available</li>
                                 <li>why do we care about ‘from scratch’</li>
                                 </ul>
-                                <p>Metrics - more audio features than symbolic.</p>
-                                <p><span class="citation" data-cites="giraud_chapter_2015">(Giraud et al. 2015)</span></p>
-                                <blockquote>
-                                <p>There is less work to date that focuses on segmentation of symbolic scores</p>
-                                </blockquote>
+                                <p><span class="citation" data-cites="sturm_benchmarking_2017">(Sturm 2017)</span> gives background as to why we need metrics but no specific methods.</p>
                                 <p>Why do we need computational rather than human analysis</p>
                                 <p><span class="citation" data-cites="marsden_music_2016">(Marsden 2016)</span></p>
                                 <blockquote>
                                 <p>Computational music analysis needs to carve out a place for itself where it is not simply mimicry of human analysis, but a place which is not so distant from the human activity to prevent useful communication with musicians. We need to recall the potential value of computational analysis, the reasons we embark on this enterprise at all.</p>
+                                </blockquote>
+                                <p>Metrics - more audio features than symbolic.</p>
+                                <p><span class="citation" data-cites="giraud_chapter_2015">(Giraud et al. 2015)</span></p>
+                                <blockquote>
+                                <p>There is less work to date that focuses on segmentation of symbolic scores</p>
                                 </blockquote>
                                 <h2 data-number="1.8" id="scope-of-this-work"><span class="header-section-number">1.8</span> Scope of this work</h2>
                                 <p>…TODO… Symbolic music only</p>
@@ -303,7 +308,7 @@
                                 <li><input type="checkbox" disabled="" />
                                 We provide a literature review of the current state-of-the-art with respect to algorithmic music composition: the challenges addressed and models presented<ul class="task-list">
                                 <li><input type="checkbox" disabled="" />
-                                Note that <span class="citation" data-cites="briot_deep_2019">(Briot et al. 2019)</span> does not include COCOnet nor any Transformer models so details of these is a new contribution</li>
+                                Note that <span class="citation" data-cites="briot_deep_2019">(Briot et al. 2019)</span> does not include <code>COCOnet</code> nor any Transformer models so details of these is a new contribution</li>
                                 </ul></li>
                                 <li><input type="checkbox" disabled="" />
                                 Consistent open source python re-implementations of all models compared</li>
@@ -536,6 +541,9 @@
                                 </div>
                                 <div id="ref-sturm_ai_2020" class="csl-entry" role="doc-biblioentry">
                                 Sturm, B., 2020. <span>AI</span> <span>Music</span> <span>Generation</span> <span>Challenge</span> 2020. <em>The 2020 Joint Conference on AI Music Creativity</em>. Available at: <a href="https://boblsturm.github.io/aimusic2020/">https://boblsturm.github.io/aimusic2020/</a> [Accessed January 22, 2021].
+                                </div>
+                                <div id="ref-sturm_benchmarking_2017" class="csl-entry" role="doc-biblioentry">
+                                Sturm, B.L.T., 2017. Benchmarking <span>“music generation systems?”</span> <em>Folk the Algorithms</em>. Available at: <a href="https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/">https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/</a> [Accessed February 18, 2021].
                                 </div>
                                 <div id="ref-theis_note_2016" class="csl-entry" role="doc-biblioentry">
                                 Theis, L., Oord, A. van den &amp; Bethge, M., 2016. A <span>Note</span> on the <span>Evaluation</span> of <span>Generative</span> <span>Models</span>. <em>arXiv:1511.01844 [cs, stat]</em>. Available at: <a href="http://arxiv.org/abs/1511.01844">http://arxiv.org/abs/1511.01844</a> [Accessed January 23, 2021].
