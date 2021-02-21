@@ -13,7 +13,7 @@ This is the introduction. Quisque finibus aliquet cursus. Integer in pellentesqu
 To include a reference, add the citation key shown in the references.bib file.
 -->
 
-To include a citation to the text, just add the citation key shown in the references.bib file. The style of the citation is determined by the ref_format.csl file. For example, in The Living Sea you can find pictures of the Calypso [@Cousteau1963].
+To include a citation to the text, just add the citation key shown in the references.bib file. The style of the citation is determined by the ref_format.csl file. For example, in The Living Sea you can find pictures of the Calypso [@Cousteau1963]. You can also reference two things at the same time [@Cousteau1963,@el_sayed_larcheologie_2012].
 
 In neque mauris, maximus at sapien a, iaculis dignissim justo. Aliquam erat volutpat. Praesent varius risus auctor est ultricies, sit amet consequat nisi laoreet. Suspendisse non est et mauris pharetra sagittis non porta justo. Praesent malesuada metus ut sapien sodales ornare.
 
