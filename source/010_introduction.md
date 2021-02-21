@@ -98,7 +98,7 @@ Why do we need computational rather than human analysis
 
 Metrics - more audio features than symbolic.
 
-[@giraud_chapter_2015]
+[@giraud_computational_2016]
 
 > There is less work to date that focuses on segmentation of symbolic scores
 
