@@ -18,4 +18,5 @@ sudo tlmgr update l3backend
 # Would it be simpler to just update all packages? (takes ~10m)
 # sudo tlmgr update --all
 pip install pandoc-fignos pandoc-eqnos pandoc-tablenos pandoc-secnos pandoc-shortcaption
-
+pip install rebiber -U
+rebiber --update
