@@ -115,6 +115,9 @@ docx:
 		--verbose \
 		2>pandoc.docx.log
 
-all: pdf tex html docx
+bib:
+	rebiber -i "$(BIBFILE)"
+
+all: bib pdf tex html docx
 
 .PHONY: help install pdf docx html tex
