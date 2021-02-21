@@ -40,9 +40,11 @@ evaluate their success
   research proving this
 - [ ] Consistency is key when tracking performance over the long term
 - [ ] Attempts to unify metrics and human opinion - give WMT as an example
-  [@website_wmt_2020]
+  [@haddow_wmt_2020]
 
 ### Differences between evaluating audio and symbolic outputs
+
+[@dhariwal_jukebox_2020]
 
 ### The impossible task of satisfying all evaluation requirements with a single metric
 - [ ] Should tie a metric with performance for an intended task [@theis_note_2016]

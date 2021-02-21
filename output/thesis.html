@@ -203,9 +203,10 @@
                 </ul></li>
                 <li><a href="#new-metrics-for-evaluating-musical-generations"><span class="toc-section-number">3</span> New metrics for Evaluating Musical Generations</a>
                 <ul>
-                <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">3.1</span> The MIDI degradation toolkit</a></li>
-                <li><a href="#a-phrase-level-metric-for-short-term-structure"><span class="toc-section-number">3.2</span> A phrase-level metric for short-term structure</a></li>
-                <li><a href="#a-piece-level-metric-for-long-term-structure"><span class="toc-section-number">3.3</span> A piece-level metric for long-term structure</a></li>
+                <li><a href="#features-of-symbolic-music"><span class="toc-section-number">3.1</span> Features of symbolic music</a></li>
+                <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">3.2</span> The MIDI degradation toolkit</a></li>
+                <li><a href="#a-phrase-level-metric-for-short-term-structure"><span class="toc-section-number">3.3</span> A phrase-level metric for short-term structure</a></li>
+                <li><a href="#a-piece-level-metric-for-long-term-structure"><span class="toc-section-number">3.4</span> A piece-level metric for long-term structure</a></li>
                 </ul></li>
                 <li><a href="#evaluating-state-of-the-art-music-generating-models"><span class="toc-section-number">4</span> Evaluating State-of-the-Art Music-generating Models</a>
                 <ul>
@@ -363,9 +364,10 @@
                                 <li><input type="checkbox" disabled="" />
                                 Consistency is key when tracking performance over the long term</li>
                                 <li><input type="checkbox" disabled="" />
-                                Attempts to unify metrics and human opinion - give WMT as an example <span class="citation" data-cites="website_wmt_2020">(Haddow 2020)</span></li>
+                                Attempts to unify metrics and human opinion - give WMT as an example <span class="citation" data-cites="haddow_wmt_2020">(Haddow 2020)</span></li>
                                 </ul>
                                 <h3 data-number="2.2.2" id="differences-between-evaluating-audio-and-symbolic-outputs"><span class="header-section-number">2.2.2</span> Differences between evaluating audio and symbolic outputs</h3>
+                                <p><span class="citation" data-cites="dhariwal_jukebox_2020">(Dhariwal et al. 2020)</span></p>
                                 <h3 data-number="2.2.3" id="the-impossible-task-of-satisfying-all-evaluation-requirements-with-a-single-metric"><span class="header-section-number">2.2.3</span> The impossible task of satisfying all evaluation requirements with a single metric</h3>
                                 <ul class="task-list">
                                 <li><input type="checkbox" disabled="" />
@@ -452,10 +454,15 @@
                                 </ul>
                                 <h2 data-number="2.5" id="ethical-considerations-when-designing-automated-methods-for-composing-music"><span class="header-section-number">2.5</span> Ethical considerations when designing automated methods for composing music</h2>
                                 <h1 data-number="3" id="new-metrics-for-evaluating-musical-generations"><span class="header-section-number">3</span> New metrics for Evaluating Musical Generations</h1>
-                                <h2 data-number="3.1" id="the-midi-degradation-toolkit"><span class="header-section-number">3.1</span> The MIDI degradation toolkit</h2>
+                                <h2 data-number="3.1" id="features-of-symbolic-music"><span class="header-section-number">3.1</span> Features of symbolic music</h2>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Discuss different features which can be extracted</li>
+                                </ul>
+                                <h2 data-number="3.2" id="the-midi-degradation-toolkit"><span class="header-section-number">3.2</span> The MIDI degradation toolkit</h2>
                                 <p><span class="citation" data-cites="mcleod_midi_2020">(McLeod et al. 2020)</span></p>
-                                <h2 data-number="3.2" id="a-phrase-level-metric-for-short-term-structure"><span class="header-section-number">3.2</span> A phrase-level metric for short-term structure</h2>
-                                <h2 data-number="3.3" id="a-piece-level-metric-for-long-term-structure"><span class="header-section-number">3.3</span> A piece-level metric for long-term structure</h2>
+                                <h2 data-number="3.3" id="a-phrase-level-metric-for-short-term-structure"><span class="header-section-number">3.3</span> A phrase-level metric for short-term structure</h2>
+                                <h2 data-number="3.4" id="a-piece-level-metric-for-long-term-structure"><span class="header-section-number">3.4</span> A piece-level metric for long-term structure</h2>
                                 <h1 data-number="4" id="evaluating-state-of-the-art-music-generating-models"><span class="header-section-number">4</span> Evaluating State-of-the-Art Music-generating Models</h1>
                                 <ul class="task-list">
                                 <li><input type="checkbox" disabled="" />
@@ -518,20 +525,23 @@
                                 <div id="ref-cuthbert_music21_2010" class="csl-entry" role="doc-biblioentry">
                                 Cuthbert, M.S. &amp; Ariza, C., 2010. music21: <span>A</span> <span>Toolkit</span> for <span>Computer</span>-<span>Aided</span> <span>Musicology</span> and <span>Symbolic</span> <span>Music</span> <span>Data</span>. In <em>Proceedings of the 11th <span>International</span> <span>Society</span> for <span>Music</span> <span>Information</span> <span>Retrieval</span> <span>Conference</span></em>. Available at: <a href="https://dspace.mit.edu/handle/1721.1/84963">https://dspace.mit.edu/handle/1721.1/84963</a> [Accessed January 23, 2021].
                                 </div>
+                                <div id="ref-dhariwal_jukebox_2020" class="csl-entry" role="doc-biblioentry">
+                                Dhariwal, P. et al., 2020. Jukebox: <span>A</span> <span>Generative</span> <span>Model</span> for <span>Music</span>. <em>arXiv:2005.00341 [cs, eess, stat]</em>. Available at: <a href="http://arxiv.org/abs/2005.00341">http://arxiv.org/abs/2005.00341</a> [Accessed February 19, 2021].
+                                </div>
                                 <div id="ref-dong_muspy_2020" class="csl-entry" role="doc-biblioentry">
                                 Dong, H.-W. et al., 2020. <span>MusPy</span>: <span>A</span> <span>Toolkit</span> for <span>Symbolic</span> <span>Music</span> <span>Generation</span>. In <em>Proceedings of the 21st <span>International</span> <span>Society</span> for <span>Music</span> <span>Information</span> <span>Retrieval</span> <span>Conference</span></em>. Montreal, Canada. Available at: <a href="https://program.ismir2020.net/static/final_papers/187.pdf">https://program.ismir2020.net/static/final_papers/187.pdf</a> [Accessed January 26, 2021].
                                 </div>
                                 <div id="ref-giraud_chapter_2015" class="csl-entry" role="doc-biblioentry">
                                 Giraud, M., Groult, R. &amp; Levé, F., 2015. Chapter 5 <span>Computational</span> <span>Analysis</span> of <span>Musical</span> <span>Form</span>. Available at: <a href="https:///paper/Chapter-5-Computational-Analysis-of-Musical-Form-Giraud-Groult/800e6d00d48b57115bbf8c000a9f14b7048fdcf9">/paper/Chapter-5-Computational-Analysis-of-Musical-Form-Giraud-Groult/800e6d00d48b57115bbf8c000a9f14b7048fdcf9</a> [Accessed February 17, 2021].
                                 </div>
-                                <div id="ref-website_wmt_2020" class="csl-entry" role="doc-biblioentry">
+                                <div id="ref-haddow_wmt_2020" class="csl-entry" role="doc-biblioentry">
                                 Haddow, B., 2020. <span>EMNLP</span> 2020 <span>Fifth</span> <span>Conference</span> on <span>Machine</span> <span>Translation</span> (<span>WMT20</span>). <em>2020 Fifth Conference on Machine Translation (WMT20)</em>. Available at: <a href="http://www.statmt.org/wmt20/">http://www.statmt.org/wmt20/</a> [Accessed January 23, 2021].
                                 </div>
                                 <div id="ref-hollings_ada_2018" class="csl-entry" role="doc-biblioentry">
                                 Hollings, C., Martin, U. &amp; Rice, A.C., 2018. <em>Ada <span>Lovelace</span>: <span>The</span> <span>Making</span> of a <span>Computer</span> <span>Scientist</span></em>, Oxford: Bodleian Library.
                                 </div>
                                 <div id="ref-huang_music_2019" class="csl-entry" role="doc-biblioentry">
-                                Huang, C.-Z.A. et al., 2019. Music <span>Transformer</span>: <span>Generating</span> <span>Music</span> with <span>Long</span>-<span>Term</span> <span>Structure</span>. In <em>Proceedings of the 20th <span>International</span> <span>Society</span> for <span>Music</span> <span>Information</span> <span>Retrieval</span> <span>Conference</span></em>. Available at: <a href="https://openreview.net/pdf?id=rJe4ShAcF7">https://openreview.net/pdf?id=rJe4ShAcF7</a> [Accessed January 26, 2021].
+                                Huang, C.-Z.A. et al., 2019. Music transformer: Generating music with long-term structure. In <em>7th international conference on learning representations, <span>ICLR</span> 2019, new orleans, LA, USA, may 6-9, 2019</em>. OpenReview.net. Available at: <a href="https://openreview.net/forum?id=rJe4ShAcF7">https://openreview.net/forum?id=rJe4ShAcF7</a>.
                                 </div>
                                 <div id="ref-marsden_music_2016" class="csl-entry" role="doc-biblioentry">
                                 Marsden, A., 2016. Music <span>Analysis</span> by <span>Computer</span>: <span>Ontology</span> and <span>Epistemology</span>. In D. Meredith, ed. <em>Computational <span>Music</span> <span>Analysis</span></em>. Cham: Springer International Publishing, pp. 3–28. Available at: <a href="https://doi.org/10.1007/978-3-319-25931-4_1">https://doi.org/10.1007/978-3-319-25931-4_1</a> [Accessed February 17, 2021].
@@ -549,7 +559,7 @@
                                 Sturm, B.L.T., 2017. Benchmarking <span>“music generation systems?”</span> <em>Folk the Algorithms</em>. Available at: <a href="https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/">https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/</a> [Accessed February 18, 2021].
                                 </div>
                                 <div id="ref-theis_note_2016" class="csl-entry" role="doc-biblioentry">
-                                Theis, L., Oord, A. van den &amp; Bethge, M., 2016. A <span>Note</span> on the <span>Evaluation</span> of <span>Generative</span> <span>Models</span>. <em>arXiv:1511.01844 [cs, stat]</em>. Available at: <a href="http://arxiv.org/abs/1511.01844">http://arxiv.org/abs/1511.01844</a> [Accessed January 23, 2021].
+                                Theis, L., Oord, A. van den &amp; Bethge, M., 2016. A note on the evaluation of generative models. In Y. Bengio &amp; Y. LeCun, eds. <em>4th international conference on learning representations, <span>ICLR</span> 2016, san juan, puerto rico, may 2-4, 2016, conference track proceedings</em>. Available at: <a href="http://arxiv.org/abs/1511.01844">http://arxiv.org/abs/1511.01844</a>.
                                 </div>
                                 </div>
             </body>
