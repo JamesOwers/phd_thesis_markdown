@@ -96,8 +96,8 @@ html:
 		2>pandoc.html.log
 	rm -rf "$(OUTPUTDIR)/source"
 	if [ -d "$(INPUTDIR)/figures" ]; then \
-		mkdir -p "$(OUTPUTDIR)/source" \
-		cp -r "$(INPUTDIR)/figures" "$(OUTPUTDIR)/source/figures"; \
+		mkdir -p "$(OUTPUTDIR)/source/figures"; \
+		cp -a "$(INPUTDIR)/figures/." "$(OUTPUTDIR)/source/figures/"; \
 	fi
 
 docx:
