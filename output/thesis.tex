@@ -373,7 +373,8 @@ varius, sed finibus turpis placerat.
 \addcontentsline{toc}{chapter}{Abbreviations}
 
 \begin{tabbing}
-\textbf{API}~~~~~~~~~ \= \textbf{A}pplication \textbf{P}rogramming \textbf{I}nterface \\  
+\textbf{API}~~~~~~~~~ \= \textbf{A}pplication \textbf{P}rogramming \textbf{I}nterface \\
+\textbf{AMT} \> \textbf{A}utomatic \textbf{M}usic \textbf{T}ranscription \\
 \textbf{JSON} \> \textbf{J}ava\textbf{S}cript \textbf{O}bject \textbf{N}otation \\
 \textbf{MDTK} \> \textbf{M}idi \textbf{D}egradation \textbf{T}ool\textbf{k}it \\
 \textbf{SOTA} \> \textbf{S}tate \textbf{o}f \textbf{t}he \textbf{A}rt \\
@@ -539,7 +540,7 @@ analysis, the reasons we embark on this enterprise at all.
 
 Metrics - more audio features than symbolic.
 
-(Giraud et al. 2015)
+(Giraud et al. 2016)
 
 \begin{quote}
 There is less work to date that focuses on segmentation of symbolic
@@ -874,7 +875,42 @@ Generations}\label{new-metrics-for-evaluating-musical-generations}}
 \section{The MIDI degradation
 toolkit}\label{the-midi-degradation-toolkit}}
 
-(McLeod et al. 2020)
+In (McLeod et al. 2020) we present the MIDI degradation toolkit (MDTK).
+It was originally developed for an Automatic Music Transcription (AMT)
+setting, specifically, to generate large datasets for training
+discriminative models which correct transcription errors. MDTK is a
+python (Rossum 1995) package which contains, amongst other things,
+functions which alter the symbolic music data input.
+
+We see in \ref{fig:mdtk_degradation_example}.
+
+\Cref{fig:data_formats} shows.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{source/figures/example.png}
+\caption[Example MDTK degradation]{An example degradation performed by MDTK}\label{fig:mdtk_degradation_example}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{source/figures/dataformats.pdf}
+\caption[Different data formats handled]{Data formats.}\label{fig:data_formats}
+\end{figure}
+
+\hypertarget{data-augmentation}{%
+\subsection{Data augmentation}\label{data-augmentation}}
+
+\hypertarget{evaluation-via-downstream-task-performance}{%
+\section{Evaluation via downstream task
+performance}\label{evaluation-via-downstream-task-performance}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Describe tasks as proposed in (McLeod et al. 2020) which could be used
+  to evaluate models which compose
+\end{itemize}
 
 \hypertarget{a-phrase-level-metric-for-short-term-structure}{%
 \section{A phrase-level metric for short-term
@@ -1027,11 +1063,12 @@ Available at:
 \url{https://program.ismir2020.net/static/final_papers/187.pdf}
 {[}Accessed January 26, 2021{]}.
 
-\leavevmode\hypertarget{ref-giraud_chapter_2015}{}%
-Giraud, M., Groult, R. \& Levé, F., 2015. Chapter 5 {Computational}
-{Analysis} of {Musical} {Form}. Available at:
-\href{https:///paper/Chapter-5-Computational-Analysis-of-Musical-Form-Giraud-Groult/800e6d00d48b57115bbf8c000a9f14b7048fdcf9}{/paper/Chapter-5-Computational-Analysis-of-Musical-Form-Giraud-Groult/800e6d00d48b57115bbf8c000a9f14b7048fdcf9}
-{[}Accessed February 17, 2021{]}.
+\leavevmode\hypertarget{ref-giraud_computational_2016}{}%
+Giraud, M., Groult, R. \& Levé, F., 2016. Computational {Analysis} of
+{Musical} {Form}. In D. Meredith, ed. \emph{Computational {Music}
+{Analysis}}. Cham: Springer International Publishing, pp. 113--136.
+Available at: \url{https://doi.org/10.1007/978-3-319-25931-4_5}
+{[}Accessed February 21, 2021{]}.
 
 \leavevmode\hypertarget{ref-haddow_wmt_2020}{}%
 Haddow, B., 2020. {EMNLP} 2020 {Fifth} {Conference} on {Machine}
@@ -1068,6 +1105,10 @@ McLeod, A., Owers, J. \& Yoshii, K., 2020. The {MIDI} {Degradation}
 \leavevmode\hypertarget{ref-payne_musenet_2019}{}%
 Payne, C., 2019. {MuseNet}. \emph{OpenAI}. Available at:
 \url{https://openai.com/blog/musenet/} {[}Accessed January 23, 2021{]}.
+
+\leavevmode\hypertarget{ref-van_rossum_python_1995}{}%
+Rossum, G. van, 1995. Python tutorial. Available at:
+\url{https://ir.cwi.nl/pub/5007} {[}Accessed February 21, 2021{]}.
 
 \leavevmode\hypertarget{ref-sturm_ai_2020}{}%
 Sturm, B., 2020. {AI} {Music} {Generation} {Challenge} 2020. \emph{The

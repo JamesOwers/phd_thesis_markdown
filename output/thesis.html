@@ -204,9 +204,13 @@
                 <li><a href="#new-metrics-for-evaluating-musical-generations"><span class="toc-section-number">3</span> New metrics for Evaluating Musical Generations</a>
                 <ul>
                 <li><a href="#features-of-symbolic-music"><span class="toc-section-number">3.1</span> Features of symbolic music</a></li>
-                <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">3.2</span> The MIDI degradation toolkit</a></li>
-                <li><a href="#a-phrase-level-metric-for-short-term-structure"><span class="toc-section-number">3.3</span> A phrase-level metric for short-term structure</a></li>
-                <li><a href="#a-piece-level-metric-for-long-term-structure"><span class="toc-section-number">3.4</span> A piece-level metric for long-term structure</a></li>
+                <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">3.2</span> The MIDI degradation toolkit</a>
+                <ul>
+                <li><a href="#data-augmentation"><span class="toc-section-number">3.2.1</span> Data augmentation</a></li>
+                </ul></li>
+                <li><a href="#evaluation-via-downstream-task-performance"><span class="toc-section-number">3.3</span> Evaluation via downstream task performance</a></li>
+                <li><a href="#a-phrase-level-metric-for-short-term-structure"><span class="toc-section-number">3.4</span> A phrase-level metric for short-term structure</a></li>
+                <li><a href="#a-piece-level-metric-for-long-term-structure"><span class="toc-section-number">3.5</span> A piece-level metric for long-term structure</a></li>
                 </ul></li>
                 <li><a href="#evaluating-state-of-the-art-music-generating-models"><span class="toc-section-number">4</span> Evaluating State-of-the-Art Music-generating Models</a>
                 <ul>
@@ -299,7 +303,7 @@
                                 <p>Computational music analysis needs to carve out a place for itself where it is not simply mimicry of human analysis, but a place which is not so distant from the human activity to prevent useful communication with musicians. We need to recall the potential value of computational analysis, the reasons we embark on this enterprise at all.</p>
                                 </blockquote>
                                 <p>Metrics - more audio features than symbolic.</p>
-                                <p><span class="citation" data-cites="giraud_chapter_2015">(Giraud et al. 2015)</span></p>
+                                <p><span class="citation" data-cites="giraud_computational_2016">(Giraud et al. 2016)</span></p>
                                 <blockquote>
                                 <p>There is less work to date that focuses on segmentation of symbolic scores</p>
                                 </blockquote>
@@ -460,9 +464,27 @@
                                 Discuss different features which can be extracted</li>
                                 </ul>
                                 <h2 data-number="3.2" id="the-midi-degradation-toolkit"><span class="header-section-number">3.2</span> The MIDI degradation toolkit</h2>
-                                <p><span class="citation" data-cites="mcleod_midi_2020">(McLeod et al. 2020)</span></p>
-                                <h2 data-number="3.3" id="a-phrase-level-metric-for-short-term-structure"><span class="header-section-number">3.3</span> A phrase-level metric for short-term structure</h2>
-                                <h2 data-number="3.4" id="a-piece-level-metric-for-long-term-structure"><span class="header-section-number">3.4</span> A piece-level metric for long-term structure</h2>
+                                <p>In <span class="citation" data-cites="mcleod_midi_2020">(McLeod et al. 2020)</span> we present the MIDI degradation toolkit (MDTK). It was originally developed for an Automatic Music Transcription (AMT) setting, specifically, to generate large datasets for training discriminative models which correct transcription errors. MDTK is a python <span class="citation" data-cites="van_rossum_python_1995">(Rossum 1995)</span> package which contains, amongst other things, functions which alter the symbolic music data input.</p>
+                                <p>We see in <a href="#fig:mdtk_degradation_example">1</a>.</p>
+                                <p>Figure <a href="#fig:data_formats">2</a> shows.</p>
+                                <div id="fig:mdtk_degradation_example" class="fignos">
+                                <figure>
+                                <img src="source/figures/example.png" style="width:100.0%" alt="Figure 1: An example degradation performed by MDTK" /><figcaption aria-hidden="true"><span>Figure 1:</span> An example degradation performed by MDTK</figcaption>
+                                </figure>
+                                </div>
+                                <div id="fig:data_formats" class="fignos">
+                                <figure>
+                                <embed src="source/figures/dataformats.pdf" style="width:100.0%" /><figcaption aria-hidden="true"><span>Figure 2:</span> Data formats.</figcaption>
+                                </figure>
+                                </div>
+                                <h3 data-number="3.2.1" id="data-augmentation"><span class="header-section-number">3.2.1</span> Data augmentation</h3>
+                                <h2 data-number="3.3" id="evaluation-via-downstream-task-performance"><span class="header-section-number">3.3</span> Evaluation via downstream task performance</h2>
+                                <ul class="task-list">
+                                <li><input type="checkbox" disabled="" />
+                                Describe tasks as proposed in <span class="citation" data-cites="mcleod_midi_2020">(McLeod et al. 2020)</span> which could be used to evaluate models which compose</li>
+                                </ul>
+                                <h2 data-number="3.4" id="a-phrase-level-metric-for-short-term-structure"><span class="header-section-number">3.4</span> A phrase-level metric for short-term structure</h2>
+                                <h2 data-number="3.5" id="a-piece-level-metric-for-long-term-structure"><span class="header-section-number">3.5</span> A piece-level metric for long-term structure</h2>
                                 <h1 data-number="4" id="evaluating-state-of-the-art-music-generating-models"><span class="header-section-number">4</span> Evaluating State-of-the-Art Music-generating Models</h1>
                                 <ul class="task-list">
                                 <li><input type="checkbox" disabled="" />
@@ -531,8 +553,8 @@
                                 <div id="ref-dong_muspy_2020" class="csl-entry" role="doc-biblioentry">
                                 Dong, H.-W. et al., 2020. <span>MusPy</span>: <span>A</span> <span>Toolkit</span> for <span>Symbolic</span> <span>Music</span> <span>Generation</span>. In <em>Proceedings of the 21st <span>International</span> <span>Society</span> for <span>Music</span> <span>Information</span> <span>Retrieval</span> <span>Conference</span></em>. Montreal, Canada. Available at: <a href="https://program.ismir2020.net/static/final_papers/187.pdf">https://program.ismir2020.net/static/final_papers/187.pdf</a> [Accessed January 26, 2021].
                                 </div>
-                                <div id="ref-giraud_chapter_2015" class="csl-entry" role="doc-biblioentry">
-                                Giraud, M., Groult, R. &amp; Levé, F., 2015. Chapter 5 <span>Computational</span> <span>Analysis</span> of <span>Musical</span> <span>Form</span>. Available at: <a href="https:///paper/Chapter-5-Computational-Analysis-of-Musical-Form-Giraud-Groult/800e6d00d48b57115bbf8c000a9f14b7048fdcf9">/paper/Chapter-5-Computational-Analysis-of-Musical-Form-Giraud-Groult/800e6d00d48b57115bbf8c000a9f14b7048fdcf9</a> [Accessed February 17, 2021].
+                                <div id="ref-giraud_computational_2016" class="csl-entry" role="doc-biblioentry">
+                                Giraud, M., Groult, R. &amp; Levé, F., 2016. Computational <span>Analysis</span> of <span>Musical</span> <span>Form</span>. In D. Meredith, ed. <em>Computational <span>Music</span> <span>Analysis</span></em>. Cham: Springer International Publishing, pp. 113–136. Available at: <a href="https://doi.org/10.1007/978-3-319-25931-4_5">https://doi.org/10.1007/978-3-319-25931-4_5</a> [Accessed February 21, 2021].
                                 </div>
                                 <div id="ref-haddow_wmt_2020" class="csl-entry" role="doc-biblioentry">
                                 Haddow, B., 2020. <span>EMNLP</span> 2020 <span>Fifth</span> <span>Conference</span> on <span>Machine</span> <span>Translation</span> (<span>WMT20</span>). <em>2020 Fifth Conference on Machine Translation (WMT20)</em>. Available at: <a href="http://www.statmt.org/wmt20/">http://www.statmt.org/wmt20/</a> [Accessed January 23, 2021].
@@ -551,6 +573,9 @@
                                 </div>
                                 <div id="ref-payne_musenet_2019" class="csl-entry" role="doc-biblioentry">
                                 Payne, C., 2019. <span>MuseNet</span>. <em>OpenAI</em>. Available at: <a href="https://openai.com/blog/musenet/">https://openai.com/blog/musenet/</a> [Accessed January 23, 2021].
+                                </div>
+                                <div id="ref-van_rossum_python_1995" class="csl-entry" role="doc-biblioentry">
+                                Rossum, G. van, 1995. Python tutorial. Available at: <a href="https://ir.cwi.nl/pub/5007">https://ir.cwi.nl/pub/5007</a> [Accessed February 21, 2021].
                                 </div>
                                 <div id="ref-sturm_ai_2020" class="csl-entry" role="doc-biblioentry">
                                 Sturm, B., 2020. <span>AI</span> <span>Music</span> <span>Generation</span> <span>Challenge</span> 2020. <em>The 2020 Joint Conference on AI Music Creativity</em>. Available at: <a href="https://boblsturm.github.io/aimusic2020/">https://boblsturm.github.io/aimusic2020/</a> [Accessed January 22, 2021].
