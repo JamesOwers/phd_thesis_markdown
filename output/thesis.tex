@@ -372,11 +372,19 @@ varius, sed finibus turpis placerat.
 \chapter*{Abbreviations}\label{abbreviations}}
 \addcontentsline{toc}{chapter}{Abbreviations}
 
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  check first instances of all these are spelt out, then all subsequent
+  are not
+\end{itemize}
+
 \begin{tabbing}
 \textbf{API}~~~~~~~~~ \= \textbf{A}pplication \textbf{P}rogramming \textbf{I}nterface \\
 \textbf{AMT} \> \textbf{A}utomatic \textbf{M}usic \textbf{T}ranscription \\
 \textbf{JSON} \> \textbf{J}ava\textbf{S}cript \textbf{O}bject \textbf{N}otation \\
 \textbf{MDTK} \> \textbf{M}idi \textbf{D}egradation \textbf{T}ool\textbf{k}it \\
+\textbf{NLP} \> \textbf{N}atural \textbf{L}anguage \textbf{P}rocessing \\
 \textbf{SOTA} \> \textbf{S}tate \textbf{o}f \textbf{t}he \textbf{A}rt \\
 \end{tabbing}
 
@@ -862,6 +870,10 @@ music}\label{ethical-considerations-when-designing-automated-methods-for-composi
 \chapter{New metrics for Evaluating Musical
 Generations}\label{new-metrics-for-evaluating-musical-generations}}
 
+In this chapter we discuss features and metrics currently used to
+evaluate models which generate music, and the novel additions introduced
+in this thesis.
+
 \hypertarget{features-of-symbolic-music}{%
 \section{Features of symbolic music}\label{features-of-symbolic-music}}
 
@@ -870,36 +882,6 @@ Generations}\label{new-metrics-for-evaluating-musical-generations}}
 \item[$\square$]
   Discuss different features which can be extracted
 \end{itemize}
-
-\hypertarget{the-midi-degradation-toolkit}{%
-\section{The MIDI degradation
-toolkit}\label{the-midi-degradation-toolkit}}
-
-In (McLeod et al. 2020) we present the MIDI degradation toolkit (MDTK).
-It was originally developed for an Automatic Music Transcription (AMT)
-setting, specifically, to generate large datasets for training
-discriminative models which correct transcription errors. MDTK is a
-python (Rossum 1995) package which contains, amongst other things,
-functions which alter the symbolic music data input.
-
-We see in \ref{fig:mdtk_degradation_example}.
-
-\Cref{fig:data_formats} shows.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{source/figures/example.png}
-\caption[Example MDTK degradation]{An example degradation performed by MDTK}\label{fig:mdtk_degradation_example}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{source/figures/dataformats.pdf}
-\caption[Different data formats handled]{Data formats.}\label{fig:data_formats}
-\end{figure}
-
-\hypertarget{data-augmentation}{%
-\subsection{Data augmentation}\label{data-augmentation}}
 
 \hypertarget{evaluation-via-downstream-task-performance}{%
 \section{Evaluation via downstream task
@@ -919,6 +901,74 @@ structure}\label{a-phrase-level-metric-for-short-term-structure}}
 \hypertarget{a-piece-level-metric-for-long-term-structure}{%
 \section{A piece-level metric for long-term
 structure}\label{a-piece-level-metric-for-long-term-structure}}
+
+\hypertarget{data-augmentation}{%
+\chapter{Data augmentation}\label{data-augmentation}}
+
+\begin{quote}
+\ldots I have always been of opinion that consistency is the last refuge
+of the unimaginative: but have we not all seen, and most of us admired,
+a picture from {[}Whistler's{]} hand of exquisite English girls
+strolling by an opal sea in the fantastic dresses of Japan?
+\end{quote}
+
+-- Oscar Wilde, ``The Relation of Dress to Art: A Note in Black and
+White on Mr.~Whistler's Lecture,'' Pall Mall Gazette, February 28, 1885.
+
+A model's generalisability is its most important quality with respect to
+predicting its future performance on unseen data; we can expect a model
+which generalises well to perform well with data, or within a context,
+which is nominally similar to the data from which its parameters were
+learned -- the training dataset. A model which does not generalise well
+may report very high evaluation metrics on the training dataset but
+perform poorly in the real world; its parameters have been overfitted to
+the training dataset.
+
+Many strategies are employed to encourage models generalise. For
+instance, one strategy, regularisation, controls the complexity of the
+model which is learned. Simple models generalise well; for example,
+imagine a model which just returns and thus the generalisability of the
+model -- by adding a penalty term, changing the likelihood of learning a
+given set of parameters. Another method, which aims to achieve the same
+goal, is data augmentation -- methods which improve generalisability by
+effectively expanding the size of, and adding noise to, the training
+dataset seen by the model. This approach has had much success for NLP,
+in particular see these recent approaches: BART (Lewis et al. 2020) and,
+subsequently, Speller100 (Lu et al. 2021).
+
+In this chapter we present a toolkit for adding noise to symbolic music:
+the MIDI degradation toolkit (MDTK)
+
+\hypertarget{the-midi-degradation-toolkit}{%
+\section{The MIDI degradation
+toolkit}\label{the-midi-degradation-toolkit}}
+
+In (McLeod et al. 2020) we presented MDTK. It was originally developed
+for an Automatic Music Transcription (AMT) setting, specifically, to
+generate large datasets for training discriminative models which correct
+transcription errors. MDTK is a python (Rossum 1995) package which
+contains, amongst other things, functions which alter the symbolic music
+data input.
+
+We see in \ref{fig:mdtk_degradation_example}.
+
+\Cref{fig:data_formats} shows.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{source/figures/example.png}
+\caption[Example MDTK degradation]{An example degradation performed by MDTK}\label{fig:mdtk_degradation_example}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{source/figures/dataformats.pdf}
+\caption[Different data formats handled]{Data formats.}\label{fig:data_formats}
+\end{figure}
+
+\hypertarget{an-experiment-illustrating-performance-gains-with-mdtk}{%
+\section{An experiment illustrating performance gains with
+MDTK}\label{an-experiment-illustrating-performance-gains-with-mdtk}}
 
 \hypertarget{evaluating-state-of-the-art-music-generating-models}{%
 \chapter{Evaluating State-of-the-Art Music-generating
@@ -951,6 +1001,9 @@ models}\label{strengths-and-shortcomings-of-existing-models}}
 
 \hypertarget{avenues-for-improvement}{%
 \section{Avenues for improvement}\label{avenues-for-improvement}}
+
+\hypertarget{conclusion}{%
+\chapter{Conclusion}\label{conclusion}}
 
 \hypertarget{a-new-model}{%
 \chapter{A New Model}\label{a-new-model}}
@@ -1003,9 +1056,6 @@ Potential ideas:
   \end{itemize}
 \end{itemize}
 
-\hypertarget{conclusion}{%
-\chapter{Conclusion}\label{conclusion}}
-
 \footnotesize
 \singlespacing
 \setlength{\parindent}{0in}
@@ -1051,9 +1101,8 @@ Cuthbert, M.S. \& Ariza, C., 2010. music21: {A} {Toolkit} for
 2021{]}.
 
 \leavevmode\hypertarget{ref-dhariwal_jukebox_2020}{}%
-Dhariwal, P. et al., 2020. Jukebox: {A} {Generative} {Model} for
-{Music}. \emph{arXiv:2005.00341 {[}cs, eess, stat{]}}. Available at:
-\url{http://arxiv.org/abs/2005.00341} {[}Accessed February 19, 2021{]}.
+Dhariwal, P. et al., 2020. Jukebox. \emph{OpenAI}. Available at:
+\url{https://openai.com/blog/jukebox/} {[}Accessed February 19, 2021{]}.
 
 \leavevmode\hypertarget{ref-dong_muspy_2020}{}%
 Dong, H.-W. et al., 2020. {MusPy}: {A} {Toolkit} for {Symbolic} {Music}
@@ -1086,6 +1135,21 @@ long-term structure. In \emph{7th international conference on learning
 representations, {ICLR} 2019, new orleans, LA, USA, may 6-9, 2019}.
 OpenReview.net. Available at:
 \url{https://openreview.net/forum?id=rJe4ShAcF7}.
+
+\leavevmode\hypertarget{ref-lewis_bart_2020}{}%
+Lewis, M. et al., 2020. {BART}: Denoising sequence-to-sequence
+pre-training for natural language generation, translation, and
+comprehension. In \emph{Proceedings of the 58th annual meeting of the
+association for computational linguistics}. Online: Association for
+Computational Linguistics, pp. 7871--7880. Available at:
+\url{https://www.aclweb.org/anthology/2020.acl-main.703}.
+
+\leavevmode\hypertarget{ref-lu_speller100_2021}{}%
+Lu, J., Long, J. \& Majumder, R., 2021. Speller100 expands spelling
+correction technology to 100+ languages. \emph{Microsoft Research}.
+Available at:
+\url{https://www.microsoft.com/en-us/research/blog/speller100-zero-shot-spelling-correction-at-scale-for-100-plus-languages/}
+{[}Accessed March 7, 2021{]}.
 
 \leavevmode\hypertarget{ref-marsden_music_2016}{}%
 Marsden, A., 2016. Music {Analysis} by {Computer}: {Ontology} and
