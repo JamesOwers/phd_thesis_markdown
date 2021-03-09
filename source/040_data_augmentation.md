@@ -14,25 +14,28 @@ future performance in a new data context; we can expect a model which generalise
 to perform _according to its evaluation_ within a context nominally similar to the data
 from which its parameters were learned -- the training dataset. A model which does not
 generalise well could still report very high evaluation metrics on the training dataset
-but perform poorly when released into the real world; its parameters were overfitted to
-the training dataset.
+but perform poorly when released into the real world; its parameters having been
+overfitted to the training dataset.
 
 Many strategies are employed to encourage models to generalise. For instance, one
 strategy, regularisation, controls the complexity of the model which can be learned. The
-idea is that simple models can generalise better; if a model is too powerful or complex,
-it could simply learn the training dataset "by rote". A model can be regularised by
-adding a term to its loss function to penalise extreme settings of parameters i.e.
-changing the likelihood of learning a given set of parameters.
+idea is that simple models can generalise better; if a model is too powerful or complex
+it could simply learn the training dataset "by rote" and, since it has learned no
+abstract patterns, do nothing but regurgitate parts of the training dataset. A model can
+be regularised by adding a term to its loss function to penalise extreme settings of
+parameters i.e. changing the likelihood of learning a given set of parameters.
 
 Data augmentation encompasses methods which aim to improve generalisability by
 effectively expanding the size of, and/or adding noise to, the training dataset seen by
-the model. The idea is that by seeing a larger quantity of more variant data the model
-will better generalise. This approach has had much success for NLP, in particular see
-these recent approaches: BART [@lewis_bart_2020] and, subsequently, Speller100
-[@lu_speller100_2021].
+the model. By seeing a larger quantity of more variant data than the training dataset
+the model will better generalise -- if there is randomised noise, the model cannot learn
+"by rote". This approach has had much success for NLP, in particular see these recent
+approaches: BART [@lewis_bart_2020] and, subsequently, Speller100 [@lu_speller100_2021].
 
 In this chapter we present a toolkit for adding noise to symbolic music: the MIDI
-degradation toolkit (MDTK)
+degradation toolkit (MDTK). This is previously work published work, jointly authoured by
+the author of this thesis and a collaborator, presented at the 21st
+International Society for Music Information Retrieval Conference.
 
 ## The MIDI degradation toolkit
 
@@ -41,6 +44,21 @@ Music Transcription (AMT) setting, specifically, to generate large datasets for 
 discriminative models which correct transcription errors. MDTK is a python
 [@van_rossum_python_1995] package which contains, amongst other things, functions which
 alter the symbolic music data input.
+
+The paper, poster, and a short introductory video
+are available online here:
+[https://program.ismir2020.net/poster_6-10.html](https://program.ismir2020.net/poster_6-10.html)
+
+The toolkit code is open source, and available on GitHub here:
+[https://github.com/JamesOwers/midi_degradation_toolkit](https://github.com/JamesOwers/midi_degradation_toolkit)
+
+### The degradations available in MDTK
+
+*@fig:mdtk_degradations
+
+<!-- Poster here: https://my.visme.co/editor/ZC9rcldZYVVxWHI4dnlkenl3WSsvQT09OjqIz8AkTj_aD5FHgykZ9SSL -->
+![Illustrations for all the degradations currently available in MDTK](source/figures/mdtk_degradations.png "The degradations available in MDTK"){#fig:mdtk_degradations width=100%}
+
 
 We see in @fig:mdtk_degradation_example.
 

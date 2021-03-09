@@ -916,28 +916,38 @@ strolling by an opal sea in the fantastic dresses of Japan?
 White on Mr.~Whistler's Lecture,'' Pall Mall Gazette, February 28, 1885.
 
 A model's generalisability is its most important quality with respect to
-predicting its future performance on unseen data; we can expect a model
-which generalises well to perform well with data, or within a context,
-which is nominally similar to the data from which its parameters were
-learned -- the training dataset. A model which does not generalise well
-may report very high evaluation metrics on the training dataset but
-perform poorly in the real world; its parameters have been overfitted to
-the training dataset.
+predicting its future performance in a new data context; we can expect a
+model which generalises well to perform \emph{according to its
+evaluation} within a context nominally similar to the data from which
+its parameters were learned -- the training dataset. A model which does
+not generalise well could still report very high evaluation metrics on
+the training dataset but perform poorly when released into the real
+world; its parameters having been overfitted to the training dataset.
 
-Many strategies are employed to encourage models generalise. For
+Many strategies are employed to encourage models to generalise. For
 instance, one strategy, regularisation, controls the complexity of the
-model which is learned. Simple models generalise well; for example,
-imagine a model which just returns and thus the generalisability of the
-model -- by adding a penalty term, changing the likelihood of learning a
-given set of parameters. Another method, which aims to achieve the same
-goal, is data augmentation -- methods which improve generalisability by
-effectively expanding the size of, and adding noise to, the training
-dataset seen by the model. This approach has had much success for NLP,
-in particular see these recent approaches: BART (Lewis et al. 2020) and,
+model which can be learned. The idea is that simple models can
+generalise better; if a model is too powerful or complex it could simply
+learn the training dataset ``by rote'' and, since it has learned no
+abstract patterns, do nothing but regurgitate parts of the training
+dataset. A model can be regularised by adding a term to its loss
+function to penalise extreme settings of parameters i.e.~changing the
+likelihood of learning a given set of parameters.
+
+Data augmentation encompasses methods which aim to improve
+generalisability by effectively expanding the size of, and/or adding
+noise to, the training dataset seen by the model. By seeing a larger
+quantity of more variant data than the training dataset the model will
+better generalise -- if there is randomised noise, the model cannot
+learn ``by rote.'' This approach has had much success for NLP, in
+particular see these recent approaches: BART (Lewis et al. 2020) and,
 subsequently, Speller100 (Lu et al. 2021).
 
 In this chapter we present a toolkit for adding noise to symbolic music:
-the MIDI degradation toolkit (MDTK)
+the MIDI degradation toolkit (MDTK). This is previously work published
+work, jointly authoured by the author of this thesis and a collaborator,
+presented at the 21st International Society for Music Information
+Retrieval Conference.
 
 \hypertarget{the-midi-degradation-toolkit}{%
 \section{The MIDI degradation
@@ -949,6 +959,24 @@ generate large datasets for training discriminative models which correct
 transcription errors. MDTK is a python (Rossum 1995) package which
 contains, amongst other things, functions which alter the symbolic music
 data input.
+
+The paper, poster, and a short introductory video are available online
+here: \url{https://program.ismir2020.net/poster_6-10.html}
+
+The toolkit code is open source, and available on GitHub here:
+\url{https://github.com/JamesOwers/midi_degradation_toolkit}
+
+\hypertarget{the-degradations-available-in-mdtk}{%
+\subsection{The degradations available in
+MDTK}\label{the-degradations-available-in-mdtk}}
+
+\Cref{fig:mdtk_degradations}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{source/figures/mdtk_degradations.png}
+\caption[The degradations available in MDTK]{Illustrations for all the degradations currently available in MDTK}\label{fig:mdtk_degradations}
+\end{figure}
 
 We see in \ref{fig:mdtk_degradation_example}.
 

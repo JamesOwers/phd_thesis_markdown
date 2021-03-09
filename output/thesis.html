@@ -210,7 +210,10 @@
                 </ul></li>
                 <li><a href="#data-augmentation"><span class="toc-section-number">4</span> Data augmentation</a>
                 <ul>
-                <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">4.1</span> The MIDI degradation toolkit</a></li>
+                <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">4.1</span> The MIDI degradation toolkit</a>
+                <ul>
+                <li><a href="#the-degradations-available-in-mdtk"><span class="toc-section-number">4.1.1</span> The degradations available in MDTK</a></li>
+                </ul></li>
                 <li><a href="#an-experiment-illustrating-performance-gains-with-mdtk"><span class="toc-section-number">4.2</span> An experiment illustrating performance gains with MDTK</a></li>
                 </ul></li>
                 <li><a href="#evaluating-state-of-the-art-music-generating-models"><span class="toc-section-number">5</span> Evaluating State-of-the-Art Music-generating Models</a>
@@ -481,21 +484,32 @@
                                 <p>…I have always been of opinion that consistency is the last refuge of the unimaginative: but have we not all seen, and most of us admired, a picture from [Whistler’s] hand of exquisite English girls strolling by an opal sea in the fantastic dresses of Japan?</p>
                                 </blockquote>
                                 <p>– Oscar Wilde, “The Relation of Dress to Art: A Note in Black and White on Mr. Whistler’s Lecture,” Pall Mall Gazette, February 28, 1885.</p>
-                                <p>A model’s generalisability is its most important quality with respect to predicting its future performance on unseen data; we can expect a model which generalises well to perform well with data, or within a context, which is nominally similar to the data from which its parameters were learned – the training dataset. A model which does not generalise well may report very high evaluation metrics on the training dataset but perform poorly in the real world; its parameters have been overfitted to the training dataset.</p>
-                                <p>Many strategies are employed to encourage models generalise. For instance, one strategy, regularisation, controls the complexity of the model which is learned. Simple models generalise well; for example, imagine a model which just returns and thus the generalisability of the model – by adding a penalty term, changing the likelihood of learning a given set of parameters. Another method, which aims to achieve the same goal, is data augmentation – methods which improve generalisability by effectively expanding the size of, and adding noise to, the training dataset seen by the model. This approach has had much success for NLP, in particular see these recent approaches: BART <span class="citation" data-cites="lewis_bart_2020">(Lewis et al. 2020)</span> and, subsequently, Speller100 <span class="citation" data-cites="lu_speller100_2021">(Lu et al. 2021)</span>.</p>
-                                <p>In this chapter we present a toolkit for adding noise to symbolic music: the MIDI degradation toolkit (MDTK)</p>
+                                <p>A model’s generalisability is its most important quality with respect to predicting its future performance in a new data context; we can expect a model which generalises well to perform <em>according to its evaluation</em> within a context nominally similar to the data from which its parameters were learned – the training dataset. A model which does not generalise well could still report very high evaluation metrics on the training dataset but perform poorly when released into the real world; its parameters having been overfitted to the training dataset.</p>
+                                <p>Many strategies are employed to encourage models to generalise. For instance, one strategy, regularisation, controls the complexity of the model which can be learned. The idea is that simple models can generalise better; if a model is too powerful or complex it could simply learn the training dataset “by rote” and, since it has learned no abstract patterns, do nothing but regurgitate parts of the training dataset. A model can be regularised by adding a term to its loss function to penalise extreme settings of parameters i.e. changing the likelihood of learning a given set of parameters.</p>
+                                <p>Data augmentation encompasses methods which aim to improve generalisability by effectively expanding the size of, and/or adding noise to, the training dataset seen by the model. By seeing a larger quantity of more variant data than the training dataset the model will better generalise – if there is randomised noise, the model cannot learn “by rote.” This approach has had much success for NLP, in particular see these recent approaches: BART <span class="citation" data-cites="lewis_bart_2020">(Lewis et al. 2020)</span> and, subsequently, Speller100 <span class="citation" data-cites="lu_speller100_2021">(Lu et al. 2021)</span>.</p>
+                                <p>In this chapter we present a toolkit for adding noise to symbolic music: the MIDI degradation toolkit (MDTK). This is previously work published work, jointly authoured by the author of this thesis and a collaborator, presented at the 21st International Society for Music Information Retrieval Conference.</p>
                                 <h2 data-number="4.1" id="the-midi-degradation-toolkit"><span class="header-section-number">4.1</span> The MIDI degradation toolkit</h2>
                                 <p>In <span class="citation" data-cites="mcleod_midi_2020">(McLeod et al. 2020)</span> we presented MDTK. It was originally developed for an Automatic Music Transcription (AMT) setting, specifically, to generate large datasets for training discriminative models which correct transcription errors. MDTK is a python <span class="citation" data-cites="van_rossum_python_1995">(Rossum 1995)</span> package which contains, amongst other things, functions which alter the symbolic music data input.</p>
-                                <p>We see in <a href="#fig:mdtk_degradation_example">1</a>.</p>
-                                <p>Figure <a href="#fig:data_formats">2</a> shows.</p>
+                                <p>The paper, poster, and a short introductory video are available online here: <a href="https://program.ismir2020.net/poster_6-10.html">https://program.ismir2020.net/poster_6-10.html</a></p>
+                                <p>The toolkit code is open source, and available on GitHub here: <a href="https://github.com/JamesOwers/midi_degradation_toolkit">https://github.com/JamesOwers/midi_degradation_toolkit</a></p>
+                                <h3 data-number="4.1.1" id="the-degradations-available-in-mdtk"><span class="header-section-number">4.1.1</span> The degradations available in MDTK</h3>
+                                <p>Figure <a href="#fig:mdtk_degradations">1</a></p>
+                                <!-- Poster here: https://my.visme.co/editor/ZC9rcldZYVVxWHI4dnlkenl3WSsvQT09OjqIz8AkTj_aD5FHgykZ9SSL -->
+                                <div id="fig:mdtk_degradations" class="fignos">
+                                <figure>
+                                <img src="source/figures/mdtk_degradations.png" style="width:100.0%" alt="Figure 1: Illustrations for all the degradations currently available in MDTK" /><figcaption aria-hidden="true"><span>Figure 1:</span> Illustrations for all the degradations currently available in MDTK</figcaption>
+                                </figure>
+                                </div>
+                                <p>We see in <a href="#fig:mdtk_degradation_example">2</a>.</p>
+                                <p>Figure <a href="#fig:data_formats">3</a> shows.</p>
                                 <div id="fig:mdtk_degradation_example" class="fignos">
                                 <figure>
-                                <img src="source/figures/example.png" style="width:100.0%" alt="Figure 1: An example degradation performed by MDTK" /><figcaption aria-hidden="true"><span>Figure 1:</span> An example degradation performed by MDTK</figcaption>
+                                <img src="source/figures/example.png" style="width:100.0%" alt="Figure 2: An example degradation performed by MDTK" /><figcaption aria-hidden="true"><span>Figure 2:</span> An example degradation performed by MDTK</figcaption>
                                 </figure>
                                 </div>
                                 <div id="fig:data_formats" class="fignos">
                                 <figure>
-                                <embed src="source/figures/dataformats.pdf" style="width:100.0%" /><figcaption aria-hidden="true"><span>Figure 2:</span> Data formats.</figcaption>
+                                <embed src="source/figures/dataformats.pdf" style="width:100.0%" /><figcaption aria-hidden="true"><span>Figure 3:</span> Data formats.</figcaption>
                                 </figure>
                                 </div>
                                 <h2 data-number="4.2" id="an-experiment-illustrating-performance-gains-with-mdtk"><span class="header-section-number">4.2</span> An experiment illustrating performance gains with MDTK</h2>
