@@ -939,13 +939,28 @@ generalisability by effectively expanding the size of, and/or adding
 noise to, the training dataset seen by the model. By seeing a larger
 quantity of more variant data than the training dataset the model will
 better generalise -- if there is randomised noise, the model cannot
-learn ``by rote.'' This approach has had much success for NLP, in
-particular see these recent approaches: BART (Lewis et al. 2020) and,
-subsequently, Speller100 (Lu et al. 2021).
+learn ``by rote.'' This approach has had much success within the field
+of NLP, in particular see these recent approaches: BART (Lewis et al.
+2020) and, subsequently, Speller100 (Lu et al. 2021). Within the field
+of computer vision, (Cubuk et al. 2019) advocate the automated
+application of data augmentation for the ImageNet task (Deng et al.
+2009), a classification task for image data. They find that by
+automatically tuning the type of data augmentation they apply for each
+task, they can attain a significant improvement over the
+state-of-the-art. In (Antoniou et al. 2018), the authors explicitly
+investigate the effects of generating augmented data in low-data
+regimes, advocating the use of learned generators---essentially what
+MDTK's \texttt{Degrader} objects are, described below---using GANs.
+Finally, in (Salamon \& Bello 2017), the authors solve their low-data
+regime issue for environmental sound classification by using data
+augmentation, finding that performing augmentations such as pitch
+shifting and time stretching leads to a 6 percentage point boost in
+classification accuracy. MDTK enables similar such data augmentation
+techniques to be performed on symbolic music.
 
 In this chapter we present a toolkit for adding noise to symbolic music:
-the MIDI degradation toolkit (MDTK). This is previously work published
-work, jointly authoured by the author of this thesis and a collaborator,
+the MIDI degradation toolkit (MDTK). This is previously published work,
+jointly authoured by the author of this thesis and a collaborator,
 presented at the 21st International Society for Music Information
 Retrieval Conference.
 
@@ -966,11 +981,15 @@ here: \url{https://program.ismir2020.net/poster_6-10.html}
 The toolkit code is open source, and available on GitHub here:
 \url{https://github.com/JamesOwers/midi_degradation_toolkit}
 
-\hypertarget{the-degradations-available-in-mdtk}{%
-\subsection{The degradations available in
-MDTK}\label{the-degradations-available-in-mdtk}}
+\hypertarget{the-degradations-made-available-by-mdtk}{%
+\subsection{The degradations made available by
+MDTK}\label{the-degradations-made-available-by-mdtk}}
 
-\Cref{fig:mdtk_degradations}
+\Cref{fig:mdtk_degradations} provides a visualisation of the 8 different
+types of degradations available for application with the package. Each
+function which performs a degradation considers the input to be a
+sequence of notes and either edits, removes, or adds a note to the
+sequence.
 
 \begin{figure}[htbp]
 \centering
@@ -978,25 +997,133 @@ MDTK}\label{the-degradations-available-in-mdtk}}
 \caption[The degradations available in MDTK]{Illustrations for all the degradations currently available in MDTK}\label{fig:mdtk_degradations}
 \end{figure}
 
-We see in \ref{fig:mdtk_degradation_example}.
+We now briefly describe each of these degradations:
 
-\Cref{fig:data_formats} shows.
+\begin{itemize}
+\tightlist
+\item
+  Changes to pitch:
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1.0\textwidth]{source/figures/example.png}
-\caption[Example MDTK degradation]{An example degradation performed by MDTK}\label{fig:mdtk_degradation_example}
-\end{figure}
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    \texttt{pitch\_shift}: changes the pitch of a random note. By
+    default, the new pitch is chosen uniformly at random from all
+    possible pitches (a minimum and maximum pitch can be given, and the
+    valid range defaults to 21--108 inclusive). It can also be drawn
+    from a weighted distribution of intervals around the original pitch,
+    for example to emphasize octave errors from overtones. We also
+    include a flag to force the new pitch to align with the pitch of
+    some other note in the input, to reduce out-of-key shifts, if
+    desired.
+  \end{enumerate}
+\item
+  Changes to timing:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For all of these degradations, care is taken to ensure that the
+    shifted note does not lie outside the input's initial time range. A
+    minimum and maximum resulting duration can be specified, as well as
+    a minimum and maximum shift amount. We also include flags to align
+    some combination of the shifted note's onset or duration with those
+    of other notes from the input, ensuring the note lies on some
+    metrical grid, if desired.
+  \end{itemize}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    \texttt{onset\_shift}: changes the note's onset time (the time at
+    which the note begins sounding), leaving its offset time (the time
+    at which the note ends sounding) unchanged
+  \item
+    \texttt{offset\_shift}: changes the note's offset time, leaving its
+    onset time unchanged
+  \item
+    \texttt{time\_shift}: changes the note's onset and offset times by
+    the same amount, leaving its duration unchanged
+  \end{enumerate}
+\item
+  Adding new notes or removing existing notes:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{4}
+  \tightlist
+  \item
+    \texttt{add\_note}: introduces a new note, flags to align an added
+    note's pitch, onset, or duration to those of existing notes are
+    included.
+  \item
+    \texttt{remove\_note}: removes a random note from an input
+  \end{enumerate}
+\item
+  Splitting/combining existing notes:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{6}
+  \tightlist
+  \item
+    \texttt{split\_note}: cuts a random note into some number of
+    consecutive notes of shorter duration (the first of which begins at
+    the original note's onset time and the last of which ends at the
+    original note's offset time). By default the note is split into two
+    shorter notes, but this---as well as a minimum allowable duration
+    for the resulting notes---can be set with a parameter.
+  \item
+    \texttt{join\_notes}: takes two or more consecutive notes at the
+    same pitch (with a maximum allowable gap---set with a
+    parameter---allowed between them), and joins them into a single note
+    with onset time equal to that of the first note and offset time
+    equal to that of the last.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{additional-tools-provided-by-mdtk}{%
+\subsection{Additional tools provided by
+MDTK}\label{additional-tools-provided-by-mdtk}}
+
+MDTK also includes the \texttt{Degrader} class, which can be used to
+degrade inputs dynamically. When instantiating a \texttt{Degrader}
+object, the proportion of inputs that should remain undegraded is set
+with a parameter (which can be 0). The probability of each degradation
+being performed on the input (if it is to be degraded) can also be set
+at this time. Then, each time \texttt{Degrader.degrade(input)} is
+called, a randomly degraded version of the input is generated according
+to the proportions set during object creation. The \texttt{Degrader}
+class can be easily inserted into any model training procedure in order
+to dynamically create new degraded inputs during each epoch, enabling
+the model to be trained on a dataset which is essentially unlimited in
+size.
+
+Additional utility functions are provided to convert between MIDI format
+and Pandas DataFrames (McKinney 2010) \& (The pandas development team
+2021) holding the sequence of notes -- pandas DataFrames are a useful
+data structure in Python to hold columnar data. The toolkit can also
+handle data in the midi-like command format. An illustration of data
+types is given in \Cref{fig:data_formats}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{source/figures/dataformats.pdf}
-\caption[Different data formats handled]{Data formats.}\label{fig:data_formats}
+\caption[Different data formats handled by MDTK]{Data formats – On the left, a piano roll, on the right, the same data expressed as a sequence of commands. The piano roll has two parts - the first (shown above) indicates where notes are sounding, the second (shown below) shows where note onsets are happening.}\label{fig:data_formats}
 \end{figure}
 
 \hypertarget{an-experiment-illustrating-performance-gains-with-mdtk}{%
 \section{An experiment illustrating performance gains with
 MDTK}\label{an-experiment-illustrating-performance-gains-with-mdtk}}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{source/figures/example.png}
+\caption[Example MDTK degradation]{TODO: it’s not clear that we need this…leaving here for now. An example degradation performed by MDTK}\label{fig:mdtk_degradation_example}
+\end{figure}
 
 \hypertarget{evaluating-state-of-the-art-music-generating-models}{%
 \chapter{Evaluating State-of-the-Art Music-generating
@@ -1107,6 +1234,12 @@ Potential ideas:
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-antoniou_data_2018}{}%
+Antoniou, A., Storkey, A. \& Edwards, H., 2018. Data {Augmentation}
+{Generative} {Adversarial} {Networks}. Available at:
+\url{https://openreview.net/forum?id=S1Auv-WRZ} {[}Accessed March 10,
+2021{]}.
+
 \leavevmode\hypertarget{ref-ariza_interrogator_2009}{}%
 Ariza, C., 2009. The {Interrogator} as {Critic}: {The} {Turing} {Test}
 and the {Evaluation} of {Generative} {Music} {Systems}. \emph{Computer
@@ -1120,6 +1253,13 @@ Briot, J.-P., Hadjeres, G. \& Pachet, F.-D., 2019. Deep {Learning}
 \emph{arXiv:1709.01620 {[}cs{]}}. Available at:
 \url{http://arxiv.org/abs/1709.01620} {[}Accessed January 22, 2021{]}.
 
+\leavevmode\hypertarget{ref-cubuk_autoaugment_2019}{}%
+Cubuk, E.D. et al., 2019. AutoAugment: Learning augmentation strategies
+from data. In \emph{{IEEE} conference on computer vision and pattern
+recognition, {CVPR} 2019, long beach, CA, USA, june 16-20, 2019}.
+Computer Vision Foundation / {IEEE}, pp. 113--123. Available at:
+\url{http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html}.
+
 \leavevmode\hypertarget{ref-cuthbert_music21_2010}{}%
 Cuthbert, M.S. \& Ariza, C., 2010. music21: {A} {Toolkit} for
 {Computer}-{Aided} {Musicology} and {Symbolic} {Music} {Data}. In
@@ -1127,6 +1267,13 @@ Cuthbert, M.S. \& Ariza, C., 2010. music21: {A} {Toolkit} for
 {Information} {Retrieval} {Conference}}. Available at:
 \url{https://dspace.mit.edu/handle/1721.1/84963} {[}Accessed January 23,
 2021{]}.
+
+\leavevmode\hypertarget{ref-deng_imagenet_2009}{}%
+Deng, J. et al., 2009. ImageNet: {A} large-scale hierarchical image
+database. In \emph{2009 {IEEE} computer society conference on computer
+vision and pattern recognition {(CVPR} 2009), 20-25 june 2009, miami,
+florida, {USA}}. {IEEE} Computer Society, pp. 248--255. Available at:
+\url{https://doi.org/10.1109/CVPR.2009.5206848}.
 
 \leavevmode\hypertarget{ref-dhariwal_jukebox_2020}{}%
 Dhariwal, P. et al., 2020. Jukebox. \emph{OpenAI}. Available at:
@@ -1186,6 +1333,12 @@ Marsden, A., 2016. Music {Analysis} by {Computer}: {Ontology} and
 Available at: \url{https://doi.org/10.1007/978-3-319-25931-4_1}
 {[}Accessed February 17, 2021{]}.
 
+\leavevmode\hypertarget{ref-mckinney_data_2010}{}%
+McKinney, W., 2010. Data {Structures} for {Statistical} {Computing} in
+{Python}. In Austin, Texas, pp. 56--61. Available at:
+\url{https://conference.scipy.org/proceedings/scipy2010/mckinney.html}
+{[}Accessed March 10, 2021{]}.
+
 \leavevmode\hypertarget{ref-mcleod_midi_2020}{}%
 McLeod, A., Owers, J. \& Yoshii, K., 2020. The {MIDI} {Degradation}
 {Toolkit}: {Symbolic} {Music} {Augmentation} and {Correction}. In
@@ -1202,6 +1355,12 @@ Payne, C., 2019. {MuseNet}. \emph{OpenAI}. Available at:
 Rossum, G. van, 1995. Python tutorial. Available at:
 \url{https://ir.cwi.nl/pub/5007} {[}Accessed February 21, 2021{]}.
 
+\leavevmode\hypertarget{ref-salamon_deep_2017}{}%
+Salamon, J. \& Bello, J.P., 2017. Deep {Convolutional} {Neural}
+{Networks} and {Data} {Augmentation} for {Environmental} {Sound}
+{Classification}. \emph{IEEE Signal Processing Letters}, 24(3),
+pp.279--283.
+
 \leavevmode\hypertarget{ref-sturm_ai_2020}{}%
 Sturm, B., 2020. {AI} {Music} {Generation} {Challenge} 2020. \emph{The
 2020 Joint Conference on AI Music Creativity}. Available at:
@@ -1213,6 +1372,11 @@ Sturm, B.L.T., 2017. Benchmarking {``music generation systems?''}
 \emph{Folk the Algorithms}. Available at:
 \url{https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/}
 {[}Accessed February 18, 2021{]}.
+
+\leavevmode\hypertarget{ref-pandas_software_2021}{}%
+The pandas development team, 2021. Pandas-dev/pandas: {Pandas} 1.2.3.
+Available at: \url{https://zenodo.org/record/4572994\#.YEhrWV37Rb8}
+{[}Accessed March 10, 2021{]}.
 
 \leavevmode\hypertarget{ref-theis_note_2016}{}%
 Theis, L., Oord, A. van den \& Bethge, M., 2016. A note on the

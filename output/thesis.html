@@ -212,7 +212,8 @@
                 <ul>
                 <li><a href="#the-midi-degradation-toolkit"><span class="toc-section-number">4.1</span> The MIDI degradation toolkit</a>
                 <ul>
-                <li><a href="#the-degradations-available-in-mdtk"><span class="toc-section-number">4.1.1</span> The degradations available in MDTK</a></li>
+                <li><a href="#the-degradations-made-available-by-mdtk"><span class="toc-section-number">4.1.1</span> The degradations made available by MDTK</a></li>
+                <li><a href="#additional-tools-provided-by-mdtk"><span class="toc-section-number">4.1.2</span> Additional tools provided by MDTK</a></li>
                 </ul></li>
                 <li><a href="#an-experiment-illustrating-performance-gains-with-mdtk"><span class="toc-section-number">4.2</span> An experiment illustrating performance gains with MDTK</a></li>
                 </ul></li>
@@ -486,33 +487,60 @@
                                 <p>– Oscar Wilde, “The Relation of Dress to Art: A Note in Black and White on Mr. Whistler’s Lecture,” Pall Mall Gazette, February 28, 1885.</p>
                                 <p>A model’s generalisability is its most important quality with respect to predicting its future performance in a new data context; we can expect a model which generalises well to perform <em>according to its evaluation</em> within a context nominally similar to the data from which its parameters were learned – the training dataset. A model which does not generalise well could still report very high evaluation metrics on the training dataset but perform poorly when released into the real world; its parameters having been overfitted to the training dataset.</p>
                                 <p>Many strategies are employed to encourage models to generalise. For instance, one strategy, regularisation, controls the complexity of the model which can be learned. The idea is that simple models can generalise better; if a model is too powerful or complex it could simply learn the training dataset “by rote” and, since it has learned no abstract patterns, do nothing but regurgitate parts of the training dataset. A model can be regularised by adding a term to its loss function to penalise extreme settings of parameters i.e. changing the likelihood of learning a given set of parameters.</p>
-                                <p>Data augmentation encompasses methods which aim to improve generalisability by effectively expanding the size of, and/or adding noise to, the training dataset seen by the model. By seeing a larger quantity of more variant data than the training dataset the model will better generalise – if there is randomised noise, the model cannot learn “by rote.” This approach has had much success for NLP, in particular see these recent approaches: BART <span class="citation" data-cites="lewis_bart_2020">(Lewis et al. 2020)</span> and, subsequently, Speller100 <span class="citation" data-cites="lu_speller100_2021">(Lu et al. 2021)</span>.</p>
-                                <p>In this chapter we present a toolkit for adding noise to symbolic music: the MIDI degradation toolkit (MDTK). This is previously work published work, jointly authoured by the author of this thesis and a collaborator, presented at the 21st International Society for Music Information Retrieval Conference.</p>
+                                <p>Data augmentation encompasses methods which aim to improve generalisability by effectively expanding the size of, and/or adding noise to, the training dataset seen by the model. By seeing a larger quantity of more variant data than the training dataset the model will better generalise – if there is randomised noise, the model cannot learn “by rote.” This approach has had much success within the field of NLP, in particular see these recent approaches: BART <span class="citation" data-cites="lewis_bart_2020">(Lewis et al. 2020)</span> and, subsequently, Speller100 <span class="citation" data-cites="lu_speller100_2021">(Lu et al. 2021)</span>. Within the field of computer vision, <span class="citation" data-cites="cubuk_autoaugment_2019">(Cubuk et al. 2019)</span> advocate the automated application of data augmentation for the ImageNet task <span class="citation" data-cites="deng_imagenet_2009">(Deng et al. 2009)</span>, a classification task for image data. They find that by automatically tuning the type of data augmentation they apply for each task, they can attain a significant improvement over the state-of-the-art. In <span class="citation" data-cites="antoniou_data_2018">(Antoniou et al. 2018)</span>, the authors explicitly investigate the effects of generating augmented data in low-data regimes, advocating the use of learned generators—essentially what MDTK’s <code>Degrader</code> objects are, described below—using GANs. Finally, in <span class="citation" data-cites="salamon_deep_2017">(Salamon &amp; Bello 2017)</span>, the authors solve their low-data regime issue for environmental sound classification by using data augmentation, finding that performing augmentations such as pitch shifting and time stretching leads to a 6 percentage point boost in classification accuracy. MDTK enables similar such data augmentation techniques to be performed on symbolic music.</p>
+                                <p>In this chapter we present a toolkit for adding noise to symbolic music: the MIDI degradation toolkit (MDTK). This is previously published work, jointly authoured by the author of this thesis and a collaborator, presented at the 21st International Society for Music Information Retrieval Conference.</p>
                                 <h2 data-number="4.1" id="the-midi-degradation-toolkit"><span class="header-section-number">4.1</span> The MIDI degradation toolkit</h2>
                                 <p>In <span class="citation" data-cites="mcleod_midi_2020">(McLeod et al. 2020)</span> we presented MDTK. It was originally developed for an Automatic Music Transcription (AMT) setting, specifically, to generate large datasets for training discriminative models which correct transcription errors. MDTK is a python <span class="citation" data-cites="van_rossum_python_1995">(Rossum 1995)</span> package which contains, amongst other things, functions which alter the symbolic music data input.</p>
                                 <p>The paper, poster, and a short introductory video are available online here: <a href="https://program.ismir2020.net/poster_6-10.html">https://program.ismir2020.net/poster_6-10.html</a></p>
                                 <p>The toolkit code is open source, and available on GitHub here: <a href="https://github.com/JamesOwers/midi_degradation_toolkit">https://github.com/JamesOwers/midi_degradation_toolkit</a></p>
-                                <h3 data-number="4.1.1" id="the-degradations-available-in-mdtk"><span class="header-section-number">4.1.1</span> The degradations available in MDTK</h3>
-                                <p>Figure <a href="#fig:mdtk_degradations">1</a></p>
+                                <h3 data-number="4.1.1" id="the-degradations-made-available-by-mdtk"><span class="header-section-number">4.1.1</span> The degradations made available by MDTK</h3>
+                                <p>Figure <a href="#fig:mdtk_degradations">1</a> provides a visualisation of the 8 different types of degradations available for application with the package. Each function which performs a degradation considers the input to be a sequence of notes and either edits, removes, or adds a note to the sequence.</p>
                                 <!-- Poster here: https://my.visme.co/editor/ZC9rcldZYVVxWHI4dnlkenl3WSsvQT09OjqIz8AkTj_aD5FHgykZ9SSL -->
                                 <div id="fig:mdtk_degradations" class="fignos">
                                 <figure>
                                 <img src="source/figures/mdtk_degradations.png" style="width:100.0%" alt="Figure 1: Illustrations for all the degradations currently available in MDTK" /><figcaption aria-hidden="true"><span>Figure 1:</span> Illustrations for all the degradations currently available in MDTK</figcaption>
                                 </figure>
                                 </div>
-                                <p>We see in <a href="#fig:mdtk_degradation_example">2</a>.</p>
-                                <p>Figure <a href="#fig:data_formats">3</a> shows.</p>
-                                <div id="fig:mdtk_degradation_example" class="fignos">
-                                <figure>
-                                <img src="source/figures/example.png" style="width:100.0%" alt="Figure 2: An example degradation performed by MDTK" /><figcaption aria-hidden="true"><span>Figure 2:</span> An example degradation performed by MDTK</figcaption>
-                                </figure>
-                                </div>
+                                <p>We now briefly describe each of these degradations:</p>
+                                <ul>
+                                <li>Changes to pitch:
+                                <ol type="1">
+                                <li><code>pitch_shift</code>: changes the pitch of a random note. By default, the new pitch is chosen uniformly at random from all possible pitches (a minimum and maximum pitch can be given, and the valid range defaults to 21–108 inclusive). It can also be drawn from a weighted distribution of intervals around the original pitch, for example to emphasize octave errors from overtones. We also include a flag to force the new pitch to align with the pitch of some other note in the input, to reduce out-of-key shifts, if desired.</li>
+                                </ol></li>
+                                <li>Changes to timing:
+                                <ul>
+                                <li>For all of these degradations, care is taken to ensure that the shifted note does not lie outside the input’s initial time range. A minimum and maximum resulting duration can be specified, as well as a minimum and maximum shift amount. We also include flags to align some combination of the shifted note’s onset or duration with those of other notes from the input, ensuring the note lies on some metrical grid, if desired.</li>
+                                </ul>
+                                <ol start="2" type="1">
+                                <li><code>onset_shift</code>: changes the note’s onset time (the time at which the note begins sounding), leaving its offset time (the time at which the note ends sounding) unchanged</li>
+                                <li><code>offset_shift</code>: changes the note’s offset time, leaving its onset time unchanged</li>
+                                <li><code>time_shift</code>: changes the note’s onset and offset times by the same amount, leaving its duration unchanged</li>
+                                </ol></li>
+                                <li>Adding new notes or removing existing notes:
+                                <ol start="5" type="1">
+                                <li><code>add_note</code>: introduces a new note, flags to align an added note’s pitch, onset, or duration to those of existing notes are included.</li>
+                                <li><code>remove_note</code>: removes a random note from an input</li>
+                                </ol></li>
+                                <li>Splitting/combining existing notes:
+                                <ol start="7" type="1">
+                                <li><code>split_note</code>: cuts a random note into some number of consecutive notes of shorter duration (the first of which begins at the original note’s onset time and the last of which ends at the original note’s offset time). By default the note is split into two shorter notes, but this—as well as a minimum allowable duration for the resulting notes—can be set with a parameter.</li>
+                                <li><code>join_notes</code>: takes two or more consecutive notes at the same pitch (with a maximum allowable gap—set with a parameter—allowed between them), and joins them into a single note with onset time equal to that of the first note and offset time equal to that of the last.</li>
+                                </ol></li>
+                                </ul>
+                                <h3 data-number="4.1.2" id="additional-tools-provided-by-mdtk"><span class="header-section-number">4.1.2</span> Additional tools provided by MDTK</h3>
+                                <p>MDTK also includes the <code>Degrader</code> class, which can be used to degrade inputs dynamically. When instantiating a <code>Degrader</code> object, the proportion of inputs that should remain undegraded is set with a parameter (which can be 0). The probability of each degradation being performed on the input (if it is to be degraded) can also be set at this time. Then, each time <code>Degrader.degrade(input)</code> is called, a randomly degraded version of the input is generated according to the proportions set during object creation. The <code>Degrader</code> class can be easily inserted into any model training procedure in order to dynamically create new degraded inputs during each epoch, enabling the model to be trained on a dataset which is essentially unlimited in size.</p>
+                                <p>Additional utility functions are provided to convert between MIDI format and Pandas DataFrames <span class="citation" data-cites="mckinney_data_2010">(McKinney 2010)</span> &amp; <span class="citation" data-cites="pandas_software_2021">(The pandas development team 2021)</span> holding the sequence of notes – pandas DataFrames are a useful data structure in Python to hold columnar data. The toolkit can also handle data in the midi-like command format. An illustration of data types is given in Figure <a href="#fig:data_formats">2</a>.</p>
                                 <div id="fig:data_formats" class="fignos">
                                 <figure>
-                                <embed src="source/figures/dataformats.pdf" style="width:100.0%" /><figcaption aria-hidden="true"><span>Figure 3:</span> Data formats.</figcaption>
+                                <embed src="source/figures/dataformats.pdf" style="width:100.0%" /><figcaption aria-hidden="true"><span>Figure 2:</span> Data formats – On the left, a piano roll, on the right, the same data expressed as a sequence of commands. The piano roll has two parts - the first (shown above) indicates where notes are sounding, the second (shown below) shows where note onsets are happening.</figcaption>
                                 </figure>
                                 </div>
                                 <h2 data-number="4.2" id="an-experiment-illustrating-performance-gains-with-mdtk"><span class="header-section-number">4.2</span> An experiment illustrating performance gains with MDTK</h2>
+                                <div id="fig:mdtk_degradation_example" class="fignos">
+                                <figure>
+                                <img src="source/figures/example.png" style="width:100.0%" alt="Figure 3: TODO: it’s not clear that we need this…leaving here for now. An example degradation performed by MDTK" /><figcaption aria-hidden="true"><span>Figure 3:</span> TODO: it’s not clear that we need this…leaving here for now. An example degradation performed by MDTK</figcaption>
+                                </figure>
+                                </div>
                                 <h1 data-number="5" id="evaluating-state-of-the-art-music-generating-models"><span class="header-section-number">5</span> Evaluating State-of-the-Art Music-generating Models</h1>
                                 <ul class="task-list">
                                 <li><input type="checkbox" disabled="" />
@@ -566,14 +594,23 @@
                                 Check all title casing correct (use curly braces around letters which should remain as they are). All titles should be in Title Case.</li>
                                 </ul>
                                 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+                                <div id="ref-antoniou_data_2018" class="csl-entry" role="doc-biblioentry">
+                                Antoniou, A., Storkey, A. &amp; Edwards, H., 2018. Data <span>Augmentation</span> <span>Generative</span> <span>Adversarial</span> <span>Networks</span>. Available at: <a href="https://openreview.net/forum?id=S1Auv-WRZ">https://openreview.net/forum?id=S1Auv-WRZ</a> [Accessed March 10, 2021].
+                                </div>
                                 <div id="ref-ariza_interrogator_2009" class="csl-entry" role="doc-biblioentry">
                                 Ariza, C., 2009. The <span>Interrogator</span> as <span>Critic</span>: <span>The</span> <span>Turing</span> <span>Test</span> and the <span>Evaluation</span> of <span>Generative</span> <span>Music</span> <span>Systems</span>. <em>Computer Music Journal</em>, 33(2), pp.48–70. Available at: <a href="https://www.jstor.org/stable/40301027">https://www.jstor.org/stable/40301027</a> [Accessed January 22, 2021].
                                 </div>
                                 <div id="ref-briot_deep_2019" class="csl-entry" role="doc-biblioentry">
                                 Briot, J.-P., Hadjeres, G. &amp; Pachet, F.-D., 2019. Deep <span>Learning</span> <span>Techniques</span> for <span>Music</span> <span>Generation</span> – <span>A</span> <span>Survey</span>. <em>arXiv:1709.01620 [cs]</em>. Available at: <a href="http://arxiv.org/abs/1709.01620">http://arxiv.org/abs/1709.01620</a> [Accessed January 22, 2021].
                                 </div>
+                                <div id="ref-cubuk_autoaugment_2019" class="csl-entry" role="doc-biblioentry">
+                                Cubuk, E.D. et al., 2019. AutoAugment: Learning augmentation strategies from data. In <em><span>IEEE</span> conference on computer vision and pattern recognition, <span>CVPR</span> 2019, long beach, CA, USA, june 16-20, 2019</em>. Computer Vision Foundation / <span>IEEE</span>, pp. 113–123. Available at: <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html">http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html</a>.
+                                </div>
                                 <div id="ref-cuthbert_music21_2010" class="csl-entry" role="doc-biblioentry">
                                 Cuthbert, M.S. &amp; Ariza, C., 2010. music21: <span>A</span> <span>Toolkit</span> for <span>Computer</span>-<span>Aided</span> <span>Musicology</span> and <span>Symbolic</span> <span>Music</span> <span>Data</span>. In <em>Proceedings of the 11th <span>International</span> <span>Society</span> for <span>Music</span> <span>Information</span> <span>Retrieval</span> <span>Conference</span></em>. Available at: <a href="https://dspace.mit.edu/handle/1721.1/84963">https://dspace.mit.edu/handle/1721.1/84963</a> [Accessed January 23, 2021].
+                                </div>
+                                <div id="ref-deng_imagenet_2009" class="csl-entry" role="doc-biblioentry">
+                                Deng, J. et al., 2009. ImageNet: <span>A</span> large-scale hierarchical image database. In <em>2009 <span>IEEE</span> computer society conference on computer vision and pattern recognition <span>(CVPR</span> 2009), 20-25 june 2009, miami, florida, <span>USA</span></em>. <span>IEEE</span> Computer Society, pp. 248–255. Available at: <a href="https://doi.org/10.1109/CVPR.2009.5206848">https://doi.org/10.1109/CVPR.2009.5206848</a>.
                                 </div>
                                 <div id="ref-dhariwal_jukebox_2020" class="csl-entry" role="doc-biblioentry">
                                 Dhariwal, P. et al., 2020. Jukebox. <em>OpenAI</em>. Available at: <a href="https://openai.com/blog/jukebox/">https://openai.com/blog/jukebox/</a> [Accessed February 19, 2021].
@@ -602,6 +639,9 @@
                                 <div id="ref-marsden_music_2016" class="csl-entry" role="doc-biblioentry">
                                 Marsden, A., 2016. Music <span>Analysis</span> by <span>Computer</span>: <span>Ontology</span> and <span>Epistemology</span>. In D. Meredith, ed. <em>Computational <span>Music</span> <span>Analysis</span></em>. Cham: Springer International Publishing, pp. 3–28. Available at: <a href="https://doi.org/10.1007/978-3-319-25931-4_1">https://doi.org/10.1007/978-3-319-25931-4_1</a> [Accessed February 17, 2021].
                                 </div>
+                                <div id="ref-mckinney_data_2010" class="csl-entry" role="doc-biblioentry">
+                                McKinney, W., 2010. Data <span>Structures</span> for <span>Statistical</span> <span>Computing</span> in <span>Python</span>. In Austin, Texas, pp. 56–61. Available at: <a href="https://conference.scipy.org/proceedings/scipy2010/mckinney.html">https://conference.scipy.org/proceedings/scipy2010/mckinney.html</a> [Accessed March 10, 2021].
+                                </div>
                                 <div id="ref-mcleod_midi_2020" class="csl-entry" role="doc-biblioentry">
                                 McLeod, A., Owers, J. &amp; Yoshii, K., 2020. The <span>MIDI</span> <span>Degradation</span> <span>Toolkit</span>: <span>Symbolic</span> <span>Music</span> <span>Augmentation</span> and <span>Correction</span>. In <em>Proceedings of the 21st <span>International</span> <span>Society</span> for <span>Music</span> <span>Information</span> <span>Retrieval</span> <span>Conference</span></em>. Montreal, Canada. Available at: <a href="https://program.ismir2020.net/static/final_papers/182.pdf">https://program.ismir2020.net/static/final_papers/182.pdf</a> [Accessed January 26, 2021].
                                 </div>
@@ -611,11 +651,17 @@
                                 <div id="ref-van_rossum_python_1995" class="csl-entry" role="doc-biblioentry">
                                 Rossum, G. van, 1995. Python tutorial. Available at: <a href="https://ir.cwi.nl/pub/5007">https://ir.cwi.nl/pub/5007</a> [Accessed February 21, 2021].
                                 </div>
+                                <div id="ref-salamon_deep_2017" class="csl-entry" role="doc-biblioentry">
+                                Salamon, J. &amp; Bello, J.P., 2017. Deep <span>Convolutional</span> <span>Neural</span> <span>Networks</span> and <span>Data</span> <span>Augmentation</span> for <span>Environmental</span> <span>Sound</span> <span>Classification</span>. <em>IEEE Signal Processing Letters</em>, 24(3), pp.279–283.
+                                </div>
                                 <div id="ref-sturm_ai_2020" class="csl-entry" role="doc-biblioentry">
                                 Sturm, B., 2020. <span>AI</span> <span>Music</span> <span>Generation</span> <span>Challenge</span> 2020. <em>The 2020 Joint Conference on AI Music Creativity</em>. Available at: <a href="https://boblsturm.github.io/aimusic2020/">https://boblsturm.github.io/aimusic2020/</a> [Accessed January 22, 2021].
                                 </div>
                                 <div id="ref-sturm_benchmarking_2017" class="csl-entry" role="doc-biblioentry">
                                 Sturm, B.L.T., 2017. Benchmarking <span>“music generation systems?”</span> <em>Folk the Algorithms</em>. Available at: <a href="https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/">https://highnoongmt.wordpress.com/2017/03/19/benchmarking-music-generation-systems/</a> [Accessed February 18, 2021].
+                                </div>
+                                <div id="ref-pandas_software_2021" class="csl-entry" role="doc-biblioentry">
+                                The pandas development team, 2021. Pandas-dev/pandas: <span>Pandas</span> 1.2.3. Available at: <a href="https://zenodo.org/record/4572994#.YEhrWV37Rb8">https://zenodo.org/record/4572994#.YEhrWV37Rb8</a> [Accessed March 10, 2021].
                                 </div>
                                 <div id="ref-theis_note_2016" class="csl-entry" role="doc-biblioentry">
                                 Theis, L., Oord, A. van den &amp; Bethge, M., 2016. A note on the evaluation of generative models. In Y. Bengio &amp; Y. LeCun, eds. <em>4th international conference on learning representations, <span>ICLR</span> 2016, san juan, puerto rico, may 2-4, 2016, conference track proceedings</em>. Available at: <a href="http://arxiv.org/abs/1511.01844">http://arxiv.org/abs/1511.01844</a>.
